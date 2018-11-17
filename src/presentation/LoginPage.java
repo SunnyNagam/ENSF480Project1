@@ -24,7 +24,7 @@ public class LoginPage extends JPanel implements View {
 		passwordField = new JTextField(10);
 		uNameLab = new JLabel("UserName:");
 		passLab = new JLabel("Password:");
-		introLab = new JLabel("Login to Your publication system!!");
+		introLab = new JLabel("Login to your publication system!!");
 		submitButton = new JButton("Submit");
 
 		setLayout(new BorderLayout());
