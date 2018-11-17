@@ -29,15 +29,16 @@ public class HandlerManager {
 		
 		//setup buttons and stuff
 		View views[] = c.mainView.getViews();
+		
 		for(int x=0; x<views.length; x++) {
-			handlers[x].setupButtons(views[x], controller);
+			handlers[x].setupButtons(views[x], controller);		// this is sketch TODO
 		}
 	}
 	
 	public void switchHandler(String handle) {
 		int index = handlerInd.get(handle);			// note that if page is not contained this returns null and since null is a 0 it'll go to the homepage, this can either be a bug or a feature depending on how you look at it
+		
 		if (index >= 0 && index < handlers.length) {
-
 			currentHandler = handlers[index];
 		}
 	}
