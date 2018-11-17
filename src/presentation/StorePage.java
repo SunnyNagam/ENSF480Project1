@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class StorePage extends JPanel implements View{
-	public JButton searchButton, registerButton, promotionsButton;
+	public JButton searchButton, registerButton, promotionsButton, backButton;
 	public boolean showingPromotions = false;
 	public JScrollPane promotionsPane;
 	public HashMap<String, String> promotionsData;		// TODO get from database
@@ -35,6 +35,7 @@ public class StorePage extends JPanel implements View{
 		botPan.add(searchButton = new JButton("Search"));
 		botPan.add(registerButton = new JButton("Register"));
 		botPan.add(promotionsButton = new JButton("View Promotions"));
+		botPan.add(backButton = new JButton("Back"));
 		
 		add(botPan, BorderLayout.PAGE_END);
 		

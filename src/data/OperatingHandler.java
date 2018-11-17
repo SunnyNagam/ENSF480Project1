@@ -1,5 +1,9 @@
 package data;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import presentation.ManagementPage;
 import presentation.View;
 
 public class OperatingHandler implements Handler{
@@ -12,8 +16,13 @@ public class OperatingHandler implements Handler{
 
 	@Override
 	public void setupButtons(View view, Controller controller) {
-		// TODO Auto-generated method stub
-		
+		ManagementPage gui = (ManagementPage) view;
+		gui.backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.switchTo("Home");
+			}
+		});
 	}
 	
 }
