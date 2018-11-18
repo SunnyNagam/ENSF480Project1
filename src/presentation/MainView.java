@@ -28,7 +28,7 @@ public class MainView extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(860,440) );	//660x240	//100, 100, 650, 600
 		
-		currentView = new LoginPage(c);
+		currentView = LoginPage.getLoginPage(c);
 		this.setTitle("Publishing System!");
 		
 		panel = new JPanel();

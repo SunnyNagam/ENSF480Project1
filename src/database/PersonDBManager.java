@@ -14,7 +14,7 @@ public class PersonDBManager implements DBManager {
 		personDataBase = new HashMap<String, User>();
 		personDataBase.put("SunJeep", new User("Satwick", "Nagam", "SunJeep", "yikes", 'O'));	//Sunny is an operator
 		personDataBase.put("LouJeep", new User("Louis", "Johnson", "LouJeep", "yeet", 'O'));	//Louis is an operator
-		personDataBase.put("Kanye", new User("Keenan", "Gaudio", "Kanye", "West", 'R'));	//Keenan is a registered buyer
+		personDataBase.put("Kanye", new User("Keenan", "Gaudio", "Kanye", "West", 'R'));	//Keenan is a registered buyer and lame
 		
 	}
 	
