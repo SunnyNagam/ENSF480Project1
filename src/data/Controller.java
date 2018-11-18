@@ -9,9 +9,13 @@ public class Controller extends Thread{
 	HandlerManager handlerManager;
 	
 	public Controller() {
+		initView();
+		dataManager = new DataBaseManager();	//person db by default
+	}
+	
+	public void initView() {
 		mainView = new MainView("Hey sup.", this);
 		mainView.setVisible(true);
-		dataManager = new DataBaseManager();	//person db by default
 	}
 	
 	public void launch() {

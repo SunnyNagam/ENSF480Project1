@@ -2,6 +2,7 @@ package data;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import presentation.HomePage;
@@ -32,6 +33,16 @@ public class HomeHandler implements Handler {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("Manage clicked");
 				controller.switchTo("Management");
+			}
+		});
+		
+		gui.logoutButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//System.err.println("Manage clicked");
+				//controller.mainView.dispatchEvent(new WindowEvent(controller.mainView, WindowEvent.WINDOW_CLOSING));
+				//controller.initView();
+				controller.mainView.logout(controller);
 			}
 		});
 	}
