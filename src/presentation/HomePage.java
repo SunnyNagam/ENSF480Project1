@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HomePage extends JPanel implements View{
-	public JButton storeButton, manageButton;
+	public JButton storeButton, manageButton, logoutButton;
 	
 	public HomePage() {
 		// TODO Auto-generated constructor stub
@@ -22,6 +22,7 @@ public class HomePage extends JPanel implements View{
 		JPanel botPan = new JPanel();
 		botPan.add(storeButton = new JButton("View Store"));
 		botPan.add(manageButton = new JButton("Manage Inventory"));
+		botPan.add(logoutButton = new JButton("Logout"));
 		
 		add(botPan, BorderLayout.PAGE_END);
 	}

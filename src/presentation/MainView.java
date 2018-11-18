@@ -22,20 +22,31 @@ public class MainView extends JFrame{
 		super(s);
 		controller = c;
 		
-		pageInd = new HashMap<String, Integer>();
-		
 		setBackground(new Color(204, 255, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(860,440) );	//660x240	//100, 100, 650, 600
 		
-		currentView = new LoginPage(c);
+		currentView = LoginPage.getLoginPage(c);
 		this.setTitle("Publishing System!");
 		
 		panel = new JPanel();
 		panel.add((Component) currentView);
 		add(panel);	// sketchy af
 		
-		//getRootPane().setDefaultButton(loginPanel.submitButton);
+		getRootPane().setDefaultButton(((LoginPage)currentView).submitButton);
+	}
+	
+	public void logout(Controller c) {
+		currentView = LoginPage.getLoginPage(c);
+		
+		this.setTitle("Publishing System!");
+		
+		panel.removeAll();
+		panel.add((Component) currentView);
+		
+		getRootPane().setDefaultButton(((LoginPage)currentView).submitButton);
+		
+		this.paintAll(this.getGraphics());
 	}
 	
 	public void init() {
@@ -46,6 +57,7 @@ public class MainView extends JFrame{
 		// this is temporary and wrong!
 		// add pages names and panels for appropriate "user"
 		
+		pageInd = new HashMap<String, Integer>();
 		views = new View[3];
 		
 		views[0] = new HomePage();

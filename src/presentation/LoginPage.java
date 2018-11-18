@@ -15,6 +15,9 @@ import data.User;
 
 
 public class LoginPage extends JPanel implements View {
+	
+	private static LoginPage instance;
+	
 	public JTextField userNameField, passwordField;
 	public JLabel uNameLab, passLab, introLab;
 	public JButton submitButton;
@@ -69,6 +72,14 @@ public class LoginPage extends JPanel implements View {
 				}
 			}
 		});
+	}
+	
+	public static LoginPage getLoginPage(Controller main) {
+		if(instance == null) {
+			instance = new LoginPage(main);
+		}
+		
+		return instance;
 	}
 	@Override
 	public void display() {
