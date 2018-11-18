@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ManagementPage extends JPanel implements View{
-
+	public JButton backButton;	//probably shouldn't make these public?
 	
 	public ManagementPage() {
 		// TODO Auto-generated constructor stub
@@ -17,7 +17,7 @@ public class ManagementPage extends JPanel implements View{
 		
 		JPanel panel = new JPanel();
 		panel.add(test);
-		
+		panel.add(backButton = new JButton("Back"));
 		add(panel, BorderLayout.CENTER);
 	}
 	@Override

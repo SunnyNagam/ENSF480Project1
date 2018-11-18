@@ -26,6 +26,12 @@ public class StoreHandler implements Handler {
 			}
 		});
 
+		gui.backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.switchTo("Home");
+			}
+		});
 	}
 
 }

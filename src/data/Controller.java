@@ -11,11 +11,12 @@ public class Controller extends Thread{
 	public Controller() {
 		mainView = new MainView("Hey sup.", this);
 		mainView.setVisible(true);
+		dataManager = new DataBaseManager();	//person db by default
 	}
 	
 	public void launch() {
 		mainView.init();
-		handlerManager = new HandlerManager(this);
+		handlerManager = new HandlerManager(this);	//only create and launch a handler and mainview if you are a user, what about ordinary buyers?
 		switchTo("Home");
 	}
 	
@@ -28,10 +29,20 @@ public class Controller extends Thread{
 	}
 
 	public boolean validateLogin(String userName, String password) {	// TODO actually check the Database
+		dataManager.runDB(userName, password);
+		if (dataManager.getUser() != null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		/*
 		if(userName.equals("SunJeep") && password.equals("Rulez"))
 			return true;
 		else
-			return false;
+			return false;*/
 	}
 	
 }

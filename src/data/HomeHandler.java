@@ -22,7 +22,7 @@ public class HomeHandler implements Handler {
 		gui.storeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("Store clicked");
+				//System.err.println("Store clicked");
 				controller.switchTo("Store");
 			}
 		});
@@ -30,11 +30,10 @@ public class HomeHandler implements Handler {
 		gui.manageButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("Manage clicked");
+				//System.err.println("Manage clicked");
 				controller.switchTo("Management");
 			}
 		});
-
 	}
 
 }

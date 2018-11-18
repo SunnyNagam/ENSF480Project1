@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import data.Controller;
+import data.User;
 
 
 public class LoginPage extends JPanel implements View {
@@ -24,7 +25,7 @@ public class LoginPage extends JPanel implements View {
 		passwordField = new JTextField(10);
 		uNameLab = new JLabel("UserName:");
 		passLab = new JLabel("Password:");
-		introLab = new JLabel("Login to Your publication system!!");
+		introLab = new JLabel("Login to your publication system!!");
 		submitButton = new JButton("Submit");
 
 		setLayout(new BorderLayout());
@@ -62,7 +63,9 @@ public class LoginPage extends JPanel implements View {
 					main.launch();
 				}
 				else {
-					JOptionPane.showMessageDialog(null, ("Error, you entered "+ userName+" and "+ password+" (username: SunJeep, pass: Rulez)"));
+					JOptionPane.showMessageDialog(null, ("Error, you entered "+ userName+" and "+ password+" (PersonDB says:\n"
+							+ "usernames: SunJeep, LouJeep, Kanye\n"
+							+ "pass: yikes, yeet, West)"));
 				}
 			}
 		});
