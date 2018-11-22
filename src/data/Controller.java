@@ -19,8 +19,12 @@ public class Controller extends Thread{
 	}
 	
 	public void launch() {
+		User thisUser = dataManager.getUser();
+		
 		mainView.init();
-		handlerManager = new HandlerManager(this);	//only create and launch a handler and mainview if you are a user, what about ordinary buyers?
+		
+		handlerManager = new HandlerManager(this, thisUser);	//only create and launch a handler and mainview if you are a user, what about ordinary buyers?
+		
 		switchTo("Home");
 	}
 	
@@ -33,6 +37,7 @@ public class Controller extends Thread{
 	}
 
 	public boolean validateLogin(String userName, String password) {	// TODO actually check the Database
+		// TODO: handle special case: username = "Guest" and pasword = "none"
 		dataManager.runDB(userName, password);
 		if (dataManager.getUser() != null)
 		{
