@@ -20,7 +20,7 @@ public class LoginPage extends JPanel implements View {
 	
 	public JTextField userNameField, passwordField;
 	public JLabel uNameLab, passLab, introLab;
-	public JButton submitButton;
+	public JButton submitButton, guestButton;
 	
 	public LoginPage(Controller main) {
 		// TODO Auto-generated constructor stub
@@ -30,6 +30,7 @@ public class LoginPage extends JPanel implements View {
 		passLab = new JLabel("Password:");
 		introLab = new JLabel("Login to your publication system!!");
 		submitButton = new JButton("Submit");
+		guestButton = new JButton("Continue as Guest");
 
 		setLayout(new BorderLayout());
 		
@@ -48,6 +49,7 @@ public class LoginPage extends JPanel implements View {
 		
 		JPanel botPan = new JPanel();
 		botPan.add(submitButton);
+		botPan.add(guestButton);
 		
 		add(botPan, BorderLayout.PAGE_END);
 		
@@ -70,6 +72,18 @@ public class LoginPage extends JPanel implements View {
 							+ "usernames: SunJeep, LouJeep, Kanye\n"
 							+ "pass: yikes, yeet, West)"));
 				}
+			}
+		});
+		
+		guestButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String userName = "Guest";
+				String password = "none";
+				
+				boolean validLogin = main.validateLogin(userName, password);	// build special case
+				
+				main.launch();
 			}
 		});
 	}
