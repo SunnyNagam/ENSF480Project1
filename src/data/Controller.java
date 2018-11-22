@@ -34,6 +34,7 @@ public class Controller extends Thread{
 
 	public boolean validateLogin(String userName, String password) {	// TODO actually check the Database
 		dataManager.runDB(userName, password);
+		
 		if (dataManager.getUser() != null)
 		{
 			return true;
