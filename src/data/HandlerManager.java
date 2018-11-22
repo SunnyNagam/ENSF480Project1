@@ -8,12 +8,15 @@ public class HandlerManager {
 	private Handler handlers[];
 	HashMap<String, Integer> handlerInd;
 	
+	public User user;
+	
 	Controller controller;
 	
 	public Handler currentHandler;
 	
-	public HandlerManager(Controller c) {
+	public HandlerManager(Controller c, User u) {
 		this.controller = c;
+		this.user = u;
 		
 		handlerInd = new HashMap<String, Integer>();
 		handlers = new Handler[3];

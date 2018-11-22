@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,7 +20,7 @@ public class LoginPage extends JPanel implements View {
 	
 	public JTextField userNameField, passwordField;
 	public JLabel uNameLab, passLab, introLab;
-	public JButton submitButton, unregButton;
+	public JButton submitButton, guestButton;
 	
 	public LoginPage(Controller main) {
 		// TODO Auto-generated constructor stub
@@ -31,7 +30,7 @@ public class LoginPage extends JPanel implements View {
 		passLab = new JLabel("Password:");
 		introLab = new JLabel("Login to your publication system!!");
 		submitButton = new JButton("Submit");
-		unregButton = new JButton("Proceed as Guest");
+		guestButton = new JButton("Continue as Guest");
 
 		setLayout(new BorderLayout());
 		
@@ -46,13 +45,11 @@ public class LoginPage extends JPanel implements View {
 		JPanel topPan = new JPanel();
 		topPan.add(introLab);
 		
-		add(topPan, BorderLayout.NORTH);
+		add(topPan, BorderLayout.PAGE_START);
 		
 		JPanel botPan = new JPanel();
-		botPan.setLayout(new BoxLayout(botPan, BoxLayout.Y_AXIS));
 		botPan.add(submitButton);
-		
-		botPan.add(unregButton);
+		botPan.add(guestButton);
 		
 		add(botPan, BorderLayout.PAGE_END);
 		
@@ -78,19 +75,15 @@ public class LoginPage extends JPanel implements View {
 			}
 		});
 		
-		unregButton.addActionListener(new ActionListener() {
+		guestButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean validLogin = main.validateLogin(User.GuestUser, User.GuestPass);
+				String userName = "Guest";
+				String password = "none";
 				
-				if (validLogin) {
-					main.launch();
-				} else {
-					//Error connecting to DB
-					JOptionPane.showMessageDialog(null, ("Error, you entered as a guest, but there has been an issue try a login instead\n (PersonDB says:\n"
-							+ "usernames: SunJeep, LouJeep, Kanye\n"
-							+ "pass: yikes, yeet, West)"));
-				}
+				boolean validLogin = main.validateLogin(userName, password);	// build special case
+				
+				main.launch();
 			}
 		});
 	}
