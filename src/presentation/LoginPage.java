@@ -50,6 +50,7 @@ public class LoginPage extends JPanel implements View {
 		JPanel botPan = new JPanel();
 		botPan.add(submitButton);
 		botPan.add(guestButton);
+//		botPan.add(SignUpButton);
 		
 		add(botPan, BorderLayout.PAGE_END);
 		

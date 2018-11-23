@@ -18,7 +18,7 @@ public class StoreHandler implements Handler {
 	public void setupButtons(View view, Controller controller) {
 		StorePage gui = (StorePage) view;
 		
-		gui.promotionsButton.addActionListener(new ActionListener() {
+		if (gui.promotionsButton != null) gui.promotionsButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("Promotions clicked");

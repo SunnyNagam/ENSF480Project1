@@ -63,4 +63,11 @@ public class User {
 		types.put(Manager, "Manager");
 		types.put(Author, "Content Creator");
 	}
+	//access to manage inventory button
+	public static boolean inventoryPrivileges(char _ut) {
+		if ( _ut == Operator || _ut == Manager )
+			return true;
+		else
+			return false;
+	}
 }
