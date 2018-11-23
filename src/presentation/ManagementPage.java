@@ -31,5 +31,9 @@ public class ManagementPage extends JPanel implements View{
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public char userType;
+	@Override 
+	public void setUserType(char _ut) {
+		userType = _ut;
+	}
 }

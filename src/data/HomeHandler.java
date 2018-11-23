@@ -28,7 +28,8 @@ public class HomeHandler implements Handler {
 			}
 		});
 		
-		gui.manageButton.addActionListener(new ActionListener() {
+		//view may not have created a button for manage
+		if (gui.manageButton != null) gui.manageButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("Manage clicked");

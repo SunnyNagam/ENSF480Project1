@@ -6,7 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import data.User;
+
 public class HomePage extends JPanel implements View{
+	
 	public JButton storeButton, manageButton, logoutButton;
 	
 	public HomePage() {
@@ -19,12 +22,7 @@ public class HomePage extends JPanel implements View{
 				
 		add(panel, BorderLayout.CENTER);
 		
-		JPanel botPan = new JPanel();
-		botPan.add(storeButton = new JButton("View Store"));
-		botPan.add(manageButton = new JButton("Manage Inventory"));
-		botPan.add(logoutButton = new JButton("Logout"));
 		
-		add(botPan, BorderLayout.PAGE_END);
 	}
 	@Override
 	public void display() {
@@ -37,5 +35,23 @@ public class HomePage extends JPanel implements View{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public char userType;
+	@Override 
+	public void setUserType(char _ut) {
+		userType = _ut;
+		
+		JPanel botPan = new JPanel();
+		botPan.add(storeButton = new JButton("View Store"));
+		
+		if ( User.inventoryPrivileges(_ut) )
+			botPan.add(manageButton = new JButton("Manage Inventory"));
+		
+		if ( userType == User.UnregisteredBuyer)
+			botPan.add(logoutButton = new JButton("Login"));
+		else
+			botPan.add(logoutButton = new JButton("Logout"));
+		
+		add(botPan, BorderLayout.PAGE_END);
+	}
 }

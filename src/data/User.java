@@ -28,16 +28,18 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;
-		
-		initHashyBoi();
 	}
 	
-	public String getUserName() {
+	public final String getUserName() {
 		return userName;
 	}
 	
-	public String getPassword() {
+	public final String getPassword() {
 		return password;
+	}
+	
+	public final char getType() {
+		return userType;
 	}
 	
 	public static final User guest() {
@@ -45,6 +47,11 @@ public class User {
 	}
 	
 	public final String stringType(){
+		//System.out.println("Type : " + userType);
+		
+		if (types==null) 
+			initHashyBoi();
+		
 		return types.get( userType );
 	}
 	
@@ -55,5 +62,12 @@ public class User {
 		types.put(Operator, "Operator");
 		types.put(Manager, "Manager");
 		types.put(Author, "Content Creator");
+	}
+	//access to manage inventory button
+	public static boolean inventoryPrivileges(char _ut) {
+		if ( _ut == Operator || _ut == Manager )
+			return true;
+		else
+			return false;
 	}
 }

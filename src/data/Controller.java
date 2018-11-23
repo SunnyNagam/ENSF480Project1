@@ -28,10 +28,15 @@ public class Controller extends Thread{
 		
 		switchTo("Home");
 	}
+	public final User getUser() {
+		return dataManager.getUser();
+	}
 	
 	public void switchTo(String page) {
 		// switch the gui to that page
-		mainView.switchWindow(page+"Page");
+		// page names are {type}Page : {userString}
+		String _utString = getUser().stringType();
+		mainView.switchWindow(page+"Page : " + _utString);
 		// switch the handler
 		handlerManager.switchHandler(page+"Handler");
 		// switch the database?
