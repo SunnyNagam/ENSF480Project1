@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import data.User;
+
 public class StorePage extends JPanel implements View{
 	public JButton searchButton, registerButton, promotionsButton, backButton;
 	public boolean showingPromotions = false;
@@ -31,13 +33,7 @@ public class StorePage extends JPanel implements View{
 				
 		add(mainPanel, BorderLayout.CENTER);
 		
-		JPanel botPan = new JPanel();
-		botPan.add(searchButton = new JButton("Search"));
-		botPan.add(registerButton = new JButton("Register"));
-		botPan.add(promotionsButton = new JButton("View Promotions"));
-		botPan.add(backButton = new JButton("Back"));
-		
-		add(botPan, BorderLayout.PAGE_END);
+		//buttons from here
 		
 		
 		DefaultListModel<String> promotions = new DefaultListModel<String>();
@@ -88,5 +84,19 @@ public class StorePage extends JPanel implements View{
 	@Override 
 	public void setUserType(char _ut) {
 		userType = _ut;
+		
+		//button moved to here
+		JPanel botPan = new JPanel();
+		botPan.add(searchButton = new JButton("Search"));
+		
+		if (_ut != User.UnregisteredBuyer)
+			botPan.add(promotionsButton = new JButton("View Promotions"));
+		else
+			botPan.add(registerButton = new JButton("Register"));
+		
+		botPan.add(backButton = new JButton("Back"));
+		
+		add(botPan, BorderLayout.PAGE_END);
+		
 	}
 }
