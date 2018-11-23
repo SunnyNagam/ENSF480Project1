@@ -100,9 +100,15 @@ public class MainView extends JFrame{
 		}
 	}
 	
-	public void runForm() {
-		System.out.println("in mainview runForm");
+	public void produceForm(String page) {
+		System.out.println("in mainview ProduceForm");
+		if (page.equals("Search")) {	//can add other checks for different strings and produce different forms because STRATEGY
+			formloader.setForm(new SearchForm());
+		}
+		
 		panel.removeAll();
-		panel.add(formloader.runForm());
+		panel.add((Component) formloader.runForm());
+		add(panel);
+		this.paintAll(this.getGraphics());
 	}
 }

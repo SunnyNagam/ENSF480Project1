@@ -10,16 +10,18 @@ public class FormLoader {
 		theForm = new SearchForm();
 	}
 	
-	public void setForm(String newForm) {
-		if (newForm.equals("Search"))	//idk not very nice rn
-		{
-			System.out.println("set the form to search");
-			theForm = new SearchForm();
-		}
+	public void setForm(Form newForm) {
+//		if (newForm.equals("Search"))	//idk not very nice rn
+//		{
+//			System.out.println("set the form to search");
+//			theForm = new SearchForm();
+//		}
+		theForm = newForm;
 	}
 	
-	public JPanel runForm() {
-		return theForm.loadForm();
+	public Form runForm() {
+		theForm.loadForm();
+		return theForm;
 	}
 	
 }

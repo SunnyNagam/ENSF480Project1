@@ -4,5 +4,6 @@ import javax.swing.JPanel;
 
 public interface Form {
 	
-	public JPanel loadForm();
+	public void loadForm();
+	public String getData();
 }

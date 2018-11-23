@@ -37,9 +37,7 @@ public class StoreHandler implements Handler {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("search pressed");
-				controller.loadForm("Search");
-				
+				controller.loadForm("Search");	//will call mainview to takeover
 			}
 		});
 	}
