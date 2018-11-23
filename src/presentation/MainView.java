@@ -17,6 +17,7 @@ public class MainView extends JFrame{
 	public JPanel panel;
 	private Controller controller;
 	public HashMap<String, Integer> pageInd;
+	public FormLoader formloader;
 	
 	public MainView(String s, Controller c) {
 		super(s);
@@ -34,6 +35,7 @@ public class MainView extends JFrame{
 		add(panel);	// sketchy af
 		
 		getRootPane().setDefaultButton(((LoginPage)currentView).submitButton);
+		formloader = new FormLoader();
 	}
 	
 	public void logout(Controller c) {
@@ -96,5 +98,11 @@ public class MainView extends JFrame{
 			//this.pack();
 			this.paintAll(this.getGraphics());
 		}
+	}
+	
+	public void runForm() {
+		System.out.println("in mainview runForm");
+		panel.removeAll();
+		panel.add(formloader.runForm());
 	}
 }

@@ -41,6 +41,12 @@ public class Controller extends Thread{
 		handlerManager.switchHandler(page+"Handler");
 		// switch the database?
 	}
+	
+	public void loadForm(String page) {
+		//produce a form based on button input
+		mainView.formloader.setForm(page);
+		mainView.runForm();//load the form onto view
+	}
 
 	public boolean validateLogin(String userName, String password) {	// TODO actually check the Database
 		// TODO: handle special case: username = "Guest" and pasword = "none"

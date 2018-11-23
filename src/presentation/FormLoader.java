@@ -1,5 +1,7 @@
 package presentation;
 
+import javax.swing.JPanel;
+
 public class FormLoader {
 	Form theForm;
 	
@@ -8,12 +10,16 @@ public class FormLoader {
 		theForm = new SearchForm();
 	}
 	
-	public void setForm(Form newForm) {
-		theForm = newForm;
+	public void setForm(String newForm) {
+		if (newForm.equals("Search"))	//idk not very nice rn
+		{
+			System.out.println("set the form to search");
+			theForm = new SearchForm();
+		}
 	}
 	
-	public void RunForm() {
-		theForm.loadForm();
+	public JPanel runForm() {
+		return theForm.loadForm();
 	}
 	
 }
