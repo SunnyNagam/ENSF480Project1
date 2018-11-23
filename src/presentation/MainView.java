@@ -59,16 +59,22 @@ public class MainView extends JFrame{
 		
 		pageInd = new HashMap<String, Integer>();
 		views = new View[3];
+		String login = controller.getUser()
+				.stringType();
 		
 		views[0] = new HomePage();
-		pageInd.put("HomePage", 0);
+		pageInd.put("HomePage : " + login, 0);
 		
 		views[1] = new StorePage();
-		pageInd.put("StorePage", 1);
+		pageInd.put("StorePage : " + login, 1);
 		
 		views[2] = new ManagementPage();
-		pageInd.put("ManagementPage", 2);
+		pageInd.put("ManagementPage : " + login, 2);
 		
+		char userT = controller.getUser().getType();
+		
+		for (int i = 0; i < views.length; i++)
+			views[i].setUserType(userT);
 		// -------------
 	}
 	
