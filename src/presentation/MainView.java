@@ -9,9 +9,9 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Forms.FormLoader;
-import Forms.SearchForm;
 import data.Controller;
+import presentation.forms.FormLoader;
+import presentation.forms.SearchForm;
 
 public class MainView extends JFrame{
 	private View views[];

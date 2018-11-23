@@ -1,4 +1,4 @@
-package Forms;
+package presentation.forms;
 
 import javax.swing.JPanel;
 

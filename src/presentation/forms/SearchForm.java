@@ -1,4 +1,4 @@
-package Forms;
+package presentation.forms;
 
 import java.awt.BorderLayout;
 
