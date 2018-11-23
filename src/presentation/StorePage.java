@@ -16,10 +16,10 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class StorePage extends JPanel implements View{
 	public JButton searchButton, registerButton, promotionsButton, backButton;
-	public boolean showingPromotions = false;
+	public boolean showingPromotions = false, showingSearch = false;
 	public JScrollPane promotionsPane;
 	public HashMap<String, String> promotionsData;		// TODO get from database
-	public JPanel mainPanel;
+	public JPanel mainPanel, searchPanel;
 	
 	public StorePage() {
 		// TODO Auto-generated constructor stub
@@ -58,6 +58,11 @@ public class StorePage extends JPanel implements View{
 		
 		promotionsPane = new JScrollPane(promotionsList);
 		//promotionsPane.setPreferredSize(new Dimension(300,200));
+		
+		searchPanel = new JPanel();
+		searchPanel.add(new JLabel("Search"));
+		searchPanel.add(new JLabel("stuff"));
+		searchPanel.add(new JButton("Do The thing"));
 	}
 	@Override
 	public void display() {
@@ -68,7 +73,7 @@ public class StorePage extends JPanel implements View{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		this.paintAll(this.getGraphics());
 	}
 	public void togglePromotions() {
 		if(showingPromotions) {
@@ -81,7 +86,20 @@ public class StorePage extends JPanel implements View{
 		}
 		
 		showingPromotions = !showingPromotions;
-		this.paintAll(this.getGraphics());
+		update();
 		//this.repaint();
+	}
+	public void toggleSearch() {
+		if(showingSearch) {
+			remove(searchPanel);
+			add(mainPanel, BorderLayout.CENTER);
+		}
+		else {
+			remove(mainPanel);
+			add(searchPanel, BorderLayout.CENTER);
+		}
+		
+		showingSearch = !showingSearch;
+		update();
 	}
 }

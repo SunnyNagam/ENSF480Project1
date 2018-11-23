@@ -18,6 +18,14 @@ public class StoreHandler implements Handler {
 	public void setupButtons(View view, Controller controller) {
 		StorePage gui = (StorePage) view;
 		
+		gui.searchButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.err.println("Serch clicked");
+				gui.toggleSearch();
+			}
+		});
+		
 		gui.promotionsButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
