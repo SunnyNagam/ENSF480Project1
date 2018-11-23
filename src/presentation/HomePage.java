@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HomePage extends JPanel implements View{
+	
 	public JButton storeButton, manageButton, logoutButton;
 	
 	public HomePage() {
@@ -37,5 +38,10 @@ public class HomePage extends JPanel implements View{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public char userType;
+	@Override 
+	public void setUserType(char _ut) {
+		userType = _ut;
+	}
 }

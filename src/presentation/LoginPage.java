@@ -78,8 +78,8 @@ public class LoginPage extends JPanel implements View {
 		guestButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String userName = "Guest";
-				String password = "none";
+				String userName = User.GuestUser;
+				String password = User.GuestPass;
 				
 				boolean validLogin = main.validateLogin(userName, password);	// build special case
 				
@@ -106,5 +106,10 @@ public class LoginPage extends JPanel implements View {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public char userType;
+	@Override 
+	public void setUserType(char _ut) {
+		userType = _ut;
+	}
 }

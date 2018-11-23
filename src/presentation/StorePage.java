@@ -84,4 +84,9 @@ public class StorePage extends JPanel implements View{
 		this.paintAll(this.getGraphics());
 		//this.repaint();
 	}
+	public char userType;
+	@Override 
+	public void setUserType(char _ut) {
+		userType = _ut;
+	}
 }
