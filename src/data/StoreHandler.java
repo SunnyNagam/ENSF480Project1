@@ -32,6 +32,14 @@ public class StoreHandler implements Handler {
 				controller.switchTo("Home");
 			}
 		});
+		
+		gui.searchButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.loadForm("Search");	//will call mainview to takeover
+			}
+		});
 	}
 
 }
