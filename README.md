@@ -3,7 +3,31 @@
 
 This boi is our project, many nice *features*, much cool __buttons__
 
+>
+>
 
+## Requirements
+
+- [ ] RQ2: **Operators** should be able to 
+  - [ ] add, 
+  - [ ] remove, or 
+  - [ ] update 
+  documents (book, journals, magazine, etc.)
+
+- [ ] RQ5: Ordinary-buyers should be able to 
+  - [x] search for a book, 
+  - [ ] place an order, and 
+  - [ ] make payments.
+  - [ ] They should also be able to register as a registered-buyer, if they wish.
+
+- [ ] RQ6: Registered-Buyers should be able to 
+  - [x] have access to the promotions list that regularly will be updated and 
+  - [ ] registered-buyers will be notified.
+
+- [ ] RQ7: Registered-Buyers should be able to unsubscribe if they wish.
+
+>
+>
 
 __*wowzers*__  
 \
