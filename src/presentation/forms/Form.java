@@ -9,4 +9,6 @@ public interface Form {
 	 * allows passing of Documents, Users, or whatever from the form
 	 */
 	public Object getData();
+	
+	public void displayResults(String something);
 }
