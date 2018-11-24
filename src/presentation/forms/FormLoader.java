@@ -24,4 +24,11 @@ public class FormLoader {
 		return theForm;
 	}
 	
+	public Object getData() {
+		return theForm.getData();
+	}
+	
+	public Form getForm() {
+		return theForm;
+	}
 }

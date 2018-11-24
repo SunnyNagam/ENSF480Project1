@@ -3,6 +3,7 @@ package data;
 import java.util.HashMap;
 
 import presentation.View;
+import presentation.forms.SearchForm;
 
 public class HandlerManager {
 	private Handler handlers[];
@@ -36,6 +37,11 @@ public class HandlerManager {
 		for(int x=0; x<views.length; x++) {
 			handlers[x].setupButtons(views[x], controller);		// this is sketch TODO
 		}
+		//WARNING: janky af but just trying to get a simple connection between
+		//the forms and the handlers so can fire event to controller if form
+		//data needs to be retrieved
+		//handlers[1].setForm(new SearchForm());
+		//add more forms 
 	}
 	
 	public void switchHandler(String handle) {

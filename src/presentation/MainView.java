@@ -37,7 +37,7 @@ public class MainView extends JFrame{
 		add(panel);	// sketchy af
 		
 		getRootPane().setDefaultButton(((LoginPage)currentView).submitButton);
-		formloader = new FormLoader();
+		formloader = new FormLoader();	//creates a search form by default
 	}
 	
 	public void logout(Controller c) {

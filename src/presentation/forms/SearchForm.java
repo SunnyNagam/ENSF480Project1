@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class SearchForm extends JPanel implements Form  {
 
 	JPanel SearchForm;
@@ -32,7 +35,10 @@ public class SearchForm extends JPanel implements Form  {
 	@Override
 	public Object getData() {
 		// TODO get the search value, send it back to the controller to query the document DB
-		return null;
+		String queryVal;
+		queryVal = searchField.getText();
+		return (Object) queryVal;
+				
 	}
 
 	
