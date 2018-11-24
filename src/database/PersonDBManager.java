@@ -2,6 +2,7 @@ package database;
 
 import java.util.HashMap;
 
+import data.Document;
 import data.User;	//normally packages shouldn't cross-couple :/ <- but that's basically a fancy datatype, so its just like including hashmap
 
 public class PersonDBManager implements DBManager {
@@ -10,7 +11,7 @@ public class PersonDBManager implements DBManager {
 	
 
 	
-	PersonDBManager() {
+	public PersonDBManager() {
 		//the key is the username for convienence
 		personDataBase = new HashMap<String, User>();
 		
@@ -22,7 +23,7 @@ public class PersonDBManager implements DBManager {
 	}
 	
 	@Override
-	public User checkDB(String username, String password) {
+	public User checkCredentials(String username, String password) {
 		User theUser;
 			if ((theUser = personDataBase.get(username)) != null)	//check if user exists
 			{
@@ -32,6 +33,12 @@ public class PersonDBManager implements DBManager {
 				}
 			}
 	
+		return null;
+	}
+
+	@Override
+	public Document checkDocument(int key) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
