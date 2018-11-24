@@ -6,11 +6,14 @@ import database.DocumentDBManager;
 import presentation.MainView;
 
 public class Controller extends Thread{
+	DocumentCatalog theDocuments;
 	MainView mainView;
 	DataBaseManager dataManager;
 	HandlerManager handlerManager;
 	
-	public Controller() {
+	public Controller(DocumentCatalog theDocuments) {
+		this.theDocuments = theDocuments;
+		System.out.println(theDocuments.getDocuments().get(0).getISBN());
 		initView();
 		dataManager = new DataBaseManager();	//person db by default
 	}
@@ -50,23 +53,33 @@ public class Controller extends Thread{
 	}
 	//this assumes that the correct DB is set when you switched to storepage(document DB)
 	public void resolveSearch() {
-		dataManager.setStrategy(new DocumentDBManager());	//or instead of DB use catalog?
-		try {
-			int query = Integer.parseInt((String) getFormData());
-			if (dataManager.getDoc(query) != null)
+//		dataManager.setStrategy(new DocumentDBManager());	//or instead of DB use catalog?
+//		try {
+//			int query = Integer.parseInt((String) getFormData());
+//			if (dataManager.getDoc(query) != null)
+//			{
+//				Document theDocument = dataManager.getDoc(query);
+//				mainView.formloader.displayResults(theDocument.toString());
+//			}
+//			else
+//			{
+//				System.out.println("No copies");
+//			}
+//		}
+//		catch (NumberFormatException e)
+//		{
+//			System.out.println("No copies");
+//
+//		}
+		//int query = Integer.parseInt((String) getFormData());
+		mainView.formloader.displayResults(null);	//clear the list
+		for (int i = 0; i < theDocuments.getDocuments().size(); i++) {
+			if (theDocuments.getDocuments().get(i).getISBN().equals((String) getFormData()))
 			{
-				Document theDocument = dataManager.getDoc(query);
-				mainView.formloader.displayResults(theDocument.toString());
+				System.out.println("Success");
+				mainView.formloader.displayResults(theDocuments.getDocuments().get(i).toString());
+				break;
 			}
-			else
-			{
-				System.out.println("No copies");
-			}
-		}
-		catch (NumberFormatException e)
-		{
-			System.out.println("No copies");
-
 		}
 		
 		System.out.println((String) getFormData());

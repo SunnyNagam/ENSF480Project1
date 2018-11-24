@@ -1,5 +1,6 @@
 package database;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.Document;
@@ -38,6 +39,12 @@ public class PersonDBManager implements DBManager {
 
 	@Override
 	public Document checkDocument(int key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<?> getObjects() {
 		// TODO Auto-generated method stub
 		return null;
 	}

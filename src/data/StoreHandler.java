@@ -65,7 +65,6 @@ public class StoreHandler implements Handler {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("pressed submit");
 				controller.resolveSearch();
 			}
 		});

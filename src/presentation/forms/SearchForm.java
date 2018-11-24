@@ -53,7 +53,14 @@ public class SearchForm extends JPanel implements Form  {
 	}
 
 	public void displayResults(String book) {
-		listModel.addElement(book);
+		if (book == null)
+		{
+			listModel.clear();
+		}
+		else
+		{
+			listModel.addElement(book);
+		}
 	}
 	
 }
