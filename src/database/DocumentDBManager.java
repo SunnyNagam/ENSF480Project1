@@ -9,6 +9,7 @@ import data.User;
 public class DocumentDBManager implements DBManager {
 
 	HashMap<Integer, Document> documentDataBase;	//ISBN hashed to document
+	public HashMap<String, String> promotionsData;		//
 	
 	public DocumentDBManager() {
 		documentDataBase = new HashMap<Integer, Document>();
@@ -19,6 +20,11 @@ public class DocumentDBManager implements DBManager {
 		authors123.add("Mickey Mouse");
 		documentDataBase.put(123, new Document(123, authors123, 3, "Disneyland", 1, 1, contents123));
 		
+		
+		promotionsData = new HashMap<String,String>();
+		promotionsData.put("Yikes Patel, a hero's jouney.", "$12.99");
+		promotionsData.put("LouJeep McJeep, making of a criminal.", "$34.99");
+		promotionsData.put("KeenBeen, Pimp ur audio rig to a gaudio rig.", "$99.99");
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package presentation;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -53,5 +54,9 @@ public class HomePage extends JPanel implements View{
 			botPan.add(logoutButton = new JButton("Logout"));
 		
 		add(botPan, BorderLayout.PAGE_END);
+	}
+	@Override
+	public void updateData(ArrayList<Object> arr) {
+		
 	}
 }

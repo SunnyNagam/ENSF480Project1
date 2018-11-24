@@ -1,6 +1,7 @@
 package presentation;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -35,5 +36,9 @@ public class ManagementPage extends JPanel implements View{
 	@Override 
 	public void setUserType(char _ut) {
 		userType = _ut;
+	}
+	@Override
+	public void updateData(ArrayList<Object> arr) {
+		
 	}
 }
