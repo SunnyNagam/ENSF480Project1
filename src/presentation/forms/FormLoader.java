@@ -31,4 +31,8 @@ public class FormLoader {
 	public Form getForm() {
 		return theForm;
 	}
+	
+	public void displayResults(String val) {
+		theForm.displayResults(val);
+	}
 }

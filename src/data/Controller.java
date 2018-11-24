@@ -55,7 +55,8 @@ public class Controller extends Thread{
 			int query = Integer.parseInt((String) getFormData());
 			if (dataManager.getDoc(query) != null)
 			{
-				System.out.println("Exists!");
+				Document theDocument = dataManager.getDoc(query);
+				mainView.formloader.displayResults(theDocument.toString());
 			}
 			else
 			{
