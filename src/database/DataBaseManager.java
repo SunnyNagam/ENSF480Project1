@@ -2,11 +2,13 @@ package database;
 
 import java.util.HashMap;
 
+import data.Document;
 import data.User;
 
 public class DataBaseManager {
 	DBManager DB;
 	User u;
+	Document d;
 	
 
 	public DataBaseManager() {
@@ -17,8 +19,14 @@ public class DataBaseManager {
 		DB = db;
 	}
 	
-	public void runDB(String username, String password) {	//idk yet, just general strategy pattern
-		u = DB.checkDB(username, password);
+	public void resolveCredientials(String username, String password) {	//idk yet, just general strategy pattern
+		
+		u = DB.checkCredentials(username, password);
+	}
+	
+	public Document getDoc(int key) {
+		d = DB.checkDocument(key);
+		return d;
 	}
 	public User getUser()
 	{
