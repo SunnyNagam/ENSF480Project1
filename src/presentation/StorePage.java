@@ -3,7 +3,8 @@ package presentation;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.DefaultListModel;
@@ -12,16 +13,20 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import data.User;
+import data.Document;
+import data.Controller;
 
 public class StorePage extends JPanel implements View{
 	public JButton searchButton, registerButton, promotionsButton, backButton;
 	public boolean showingPromotions = false;
 	public JScrollPane promotionsPane;
-	public HashMap<String, String> promotionsData;		// TODO get from database
+	DefaultListModel<String> promotions;
+	JList<String> promotionsList;
 	public JPanel mainPanel;
+	
+	private ArrayList<Document> promos;	
 	
 	public StorePage() {
 		// TODO Auto-generated constructor stub
@@ -34,22 +39,15 @@ public class StorePage extends JPanel implements View{
 		add(mainPanel, BorderLayout.CENTER);
 		
 		//buttons from here
+		promos = new ArrayList<Document>();
 		
-		
-		DefaultListModel<String> promotions = new DefaultListModel<String>();
-		JList<String> promotionsList = new JList<String> (promotions);
+		promotions = new DefaultListModel<String>();
+		promotionsList = new JList<String> (promotions);
 		promotionsList.setFont(new Font("menlo",Font.PLAIN,12));
-		
-		promotionsData = new HashMap<String,String>();
-		promotionsData.put("Yikes Patel, a hero's jouney.", "$12.99");
-		promotionsData.put("LouJeep McJeep, making of a criminal.", "$34.99");
-		promotionsData.put("KeenBeen, Pimp ur audio rig to a gaudio rig.", "$99.99");
-		
-		for (Map.Entry<String, String> entry : promotionsData.entrySet()) {
-		    String key = entry.getKey();
-		    String value = entry.getValue();
-		    
-		    promotions.addElement((key+" "+value));
+			
+		Iterator<Document> entry = promos.iterator();
+		while( entry.hasNext() ) {
+		    promotions.addElement(entry.next().toString());
 		}
 		
 		promotionsPane = new JScrollPane(promotionsList);
@@ -98,5 +96,21 @@ public class StorePage extends JPanel implements View{
 		
 		add(botPan, BorderLayout.PAGE_END);
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void updateData(ArrayList<Object> arr) {
+		try {
+			promos = (ArrayList<Document>) arr.clone();
+			promos.forEach(entry -> {
+				if ( entry.isVisible() )
+					promotions.addElement(entry.toString());
+			});
+			//TODO idk if thats all you need to do to update the list contianig promotions
+			//maybe update thepromotionsList and promotionsPane here
+		} catch (Exception e) {
+			System.err.println("Error Updating Store Data...\n" + e.getMessage());
+		}
 	}
 }

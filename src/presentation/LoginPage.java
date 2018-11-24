@@ -3,6 +3,7 @@ package presentation;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -105,6 +106,10 @@ public class LoginPage extends JPanel implements View {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateData(ArrayList<Object> arr) {
 		
 	}
 	
