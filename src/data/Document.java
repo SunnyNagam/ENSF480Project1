@@ -41,7 +41,7 @@ public class Document {
 	}
 	
 	public final String getISBN() {
-		return String.format("%10d\t", ISBN);
+		return String.format("%d", ISBN);
 	}
 
 	public final String getAuthors() {

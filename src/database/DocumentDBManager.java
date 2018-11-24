@@ -45,4 +45,12 @@ public class DocumentDBManager implements DBManager {
 		return null;
 	}
 
+	@Override
+	public ArrayList<Document> getObjects() {
+		ArrayList<Document> documents = new ArrayList<Document>();
+		documents.addAll(documentDataBase.values());
+		
+		return documents;
+	}
+
 }
