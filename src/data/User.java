@@ -21,6 +21,7 @@ public class User {
 	private String userName;
 	private String password;
 	private char userType;	//operator, manager, etc.
+	private boolean subscribed;	// for the promotions
 	//they would also have a payment object if a registered buyer
 	public User (String first, String last, String userName, String password, char userType) {
 		fName = first;
@@ -28,8 +29,12 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;
+		
+		this.subscribed = (userType == RegisteredBuyer);
 	}
-	
+	public void toggleSubscription() {
+		this.subscribed = !this.subscribed;
+	}
 	public final String getUserName() {
 		return userName;
 	}
