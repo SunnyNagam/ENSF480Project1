@@ -9,7 +9,7 @@ This boi is our project, many nice *features*, much cool __buttons__
 ## Requirements
 
 - [ ] RQ2: **Operators** should be able to 
-  - [ ] add, 
+  - [x] add, 
   - [ ] remove, or 
   - [ ] update 
   documents (book, journals, magazine, etc.)

@@ -69,5 +69,23 @@ public class Controller extends Thread{
 		else
 			return false;*/
 	}
+	public void update (int cmd, Object newObj) {
+		switch (cmd) {
+		case Constants.addDoc:
+			Document d = (Document) newObj;
+			theDocuments.addDocument(d);
+			if (d.promotional) 
+				theDocuments.addPromoDocument(d);
+			
+			break;
+			
+		case Constants.editDoc:
+		case Constants.updateDoc:
+			
+			
+			break;
+		}
+		
+	}
 	
 }

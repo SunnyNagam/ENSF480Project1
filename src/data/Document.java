@@ -13,7 +13,7 @@ public class Document {
 	private final Integer edition;	//for newspaper
 	private final String contents;	//the stuff in the thing
 	private boolean available;
-	
+	public boolean promotional;
 	public Document(Integer num, ArrayList<String> authors, Integer stock, String title, Integer version, Integer edition, String contents) {
 		this.ISBN = num;
 		this.authors = authors;
@@ -98,8 +98,8 @@ public class Document {
 	
 //	Setters
 //	__________________________
-	public void toggleAvailability() { 
-		this.available = !this.available; 
+	public void Available(boolean a) { 
+		this.available = a; 
 	}
 	
 	public void decrementStock(int _numSold) {

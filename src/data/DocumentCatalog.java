@@ -15,7 +15,9 @@ public class DocumentCatalog {
 	public void addDocument(Document aDocument) {
 		documents.add(aDocument);
 	}
-	
+	public void addPromoDocument(Document aDocument) {
+		promotions.add(aDocument.getTitle());
+	}
 	public void removeDocument(Document aDocument) {
 		documents.remove(aDocument);
 	}
