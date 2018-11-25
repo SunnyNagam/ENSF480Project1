@@ -8,8 +8,8 @@ import data.User;
 
 public class DocumentDBManager implements DBManager {
 
-	HashMap<String, Document> documentDataBase;	//ISBN hashed to document
-	public HashMap<String, String> promotionsData;		//
+	HashMap<Integer, Document> documentDataBase;	//ISBN hashed to document
+	public HashMap<Integer,Document> promotionsData;		//
 	
 	public DocumentDBManager() {
 		documentDataBase = new HashMap<String, Document>();
@@ -20,11 +20,11 @@ public class DocumentDBManager implements DBManager {
 		authors123.add("Mickey Mouse");
 		documentDataBase.put("DisneyLand", new Document(123, authors123, 3, "Disneyland", 1, 1, contents123));
 		
-		
-		promotionsData = new HashMap<String,String>();
-		promotionsData.put("Yikes Patel, a hero's jouney.", "$12.99");
-		promotionsData.put("LouJeep McJeep, making of a criminal.", "$34.99");
-		promotionsData.put("KeenBeen, DIY pimp ur audio rig to a gaudio rig.", "$99.99");
+		promotionsData = new HashMap<Integer,Document>();
+
+		//promotionsData.put("Yikes Patel, a hero's jouney.", "$12.99");
+		//promotionsData.put("LouJeep McJeep, making of a criminal.", "$34.99");
+		//promotionsData.put("KeenBeen, DIY pimp ur audio rig to a gaudio rig.", "$99.99");
 	}
 	
 	@Override
@@ -44,7 +44,15 @@ public class DocumentDBManager implements DBManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+  
+	// yeesh
+	public void updatePromos(boolean add, Document d) {
+		if (!add) 
+			promotionsData.remove(Integer.valueOf(d.getISBN()), d);
+		else
+			promotionsData.put(Integer.valueOf(d.getISBN()), d);
+	}
+  
 	@Override
 	public ArrayList<Document> getObjects() {
 		ArrayList<Document> documents = new ArrayList<Document>();
@@ -68,5 +76,4 @@ public class DocumentDBManager implements DBManager {
 		documentDataBase.put(key, (Document)obj);
 		
 	}
-
 }
