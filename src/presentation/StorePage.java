@@ -89,7 +89,7 @@ public class StorePage extends JPanel implements View{
 		JPanel botPan = new JPanel();
 		botPan.add(searchButton = new JButton("Search"));
 		
-		if (_ut != User.UnregisteredBuyer) {
+		if (_ut != User.UnregisteredBuyer ) {
 			botPan.add(promotionsButton = new JButton("View Promotions"));
 		}
 		else {

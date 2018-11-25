@@ -23,6 +23,9 @@ public class User {
 	private String password;
 	private char userType;	//operator, manager, etc.
 	private boolean subscribed;	// for the promotions
+	public boolean isSubscribed() {
+		return subscribed;
+	}
 	//they would also have a payment object if a registered buyer
 	public User (String first, String last, String userName, String password, char userType) {
 		fName = first;
@@ -31,7 +34,7 @@ public class User {
 		this.password = password;
 		this.userType = userType;
 		
-		this.subscribed = (userType == RegisteredBuyer);
+		this.subscribed = (userType != UnregisteredBuyer);
 	}
 	public void toggleSubscription() {
 		this.subscribed = !this.subscribed;

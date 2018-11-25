@@ -11,7 +11,7 @@ import data.User;
 
 public class HomePage extends JPanel implements View{
 	
-	public JButton storeButton, manageButton, logoutButton;
+	public JButton storeButton, manageButton, logoutButton, unsubButton;
 	
 	public HomePage() {
 		// TODO Auto-generated constructor stub
@@ -52,6 +52,9 @@ public class HomePage extends JPanel implements View{
 			botPan.add(logoutButton = new JButton("Login"));
 		else
 			botPan.add(logoutButton = new JButton("Logout"));
+		
+		if(userType != User.UnregisteredBuyer)
+			botPan.add(unsubButton = new JButton("Toggle Subscription"));
 		
 		add(botPan, BorderLayout.PAGE_END);
 	}

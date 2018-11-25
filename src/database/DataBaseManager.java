@@ -25,7 +25,7 @@ public class DataBaseManager {
 		u = DB.checkCredentials(username, password);
 	}
 	
-	public Document getDoc(int key) {
+	public Document getDoc(String key) {
 		d = DB.checkDocument(key);
 		return d;
 	}

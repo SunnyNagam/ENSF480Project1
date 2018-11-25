@@ -8,7 +8,7 @@ import data.Document;
 
 public interface DBManager {
 	public User checkCredentials(String username, String password);
-	public Document checkDocument(int key);
+	public Document checkDocument(String key);
 	public ArrayList<?> getObjects();
 	public void addObject(String key, Object obj);
 }

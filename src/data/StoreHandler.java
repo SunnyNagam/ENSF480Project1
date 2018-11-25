@@ -3,6 +3,8 @@ package data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import database.PersonDBManager;
 import presentation.StorePage;
 import presentation.View;
@@ -28,7 +30,11 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("Promotions clicked");
-				gui.togglePromotions();
+				if(controller.getUser().isSubscribed())
+					gui.togglePromotions();
+				else {
+					JOptionPane.showMessageDialog(controller.mainView, "Please register to view promotions.");
+				}
 			}
 		});
 		

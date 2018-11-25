@@ -28,7 +28,7 @@ public class DocumentDBManager implements DBManager {
 	}
 	
 	@Override
-	public Document checkDocument(int key) {
+	public Document checkDocument(String key) {
 		Document theDocument;
 			if ((theDocument = documentDataBase.get(key)) != null)
 			{

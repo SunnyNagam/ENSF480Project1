@@ -37,9 +37,12 @@ public class PersonDBManager implements DBManager {
 		return null;
 	}
 	
+	public User getUser(String key) {
+		return personDataBase.get(key);
+	}
+	
 	@Override
-	public Document checkDocument(int key) {
-		// TODO Auto-generated method stub
+	public Document checkDocument(String key) {
 		return null;
 	}
 

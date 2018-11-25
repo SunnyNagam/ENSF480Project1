@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
+import database.PersonDBManager;
 import presentation.HomePage;
 import presentation.View;
 
@@ -36,6 +37,27 @@ public class HomeHandler implements Handler {
 				controller.switchTo("Management");
 			}
 		});
+		
+		if (gui.unsubButton != null) { 
+			User temp = controller.getUser();
+			if(temp.isSubscribed())
+				gui.unsubButton.setText("UnSubscribe");
+			else
+				gui.unsubButton.setText("Subscribe");
+			
+			gui.unsubButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//System.err.println("Manage clicked");
+				User temp = controller.getUser();
+				temp.toggleSubscription();
+				if(temp.isSubscribed())
+					gui.unsubButton.setText("UnSubscribe");
+				else
+					gui.unsubButton.setText("Subscribe");
+			}
+		});
+		}
 		
 		gui.logoutButton.addActionListener(new ActionListener() {
 			@Override
