@@ -24,7 +24,7 @@ This boi is our project, many nice *features*, much cool __buttons__
   - [x] have access to the promotions list that regularly will be updated and 
   - [ ] registered-buyers will be notified.
 
-- [ ] RQ7: Registered-Buyers should be able to unsubscribe if they wish.
+- [x] RQ7: Registered-Buyers should be able to unsubscribe if they wish.
 
 >
 >
