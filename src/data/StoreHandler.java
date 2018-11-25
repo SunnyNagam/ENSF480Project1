@@ -3,9 +3,11 @@ package data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import database.PersonDBManager;
 import presentation.StorePage;
 import presentation.View;
 import presentation.forms.Form;
+import presentation.forms.RegisterForm;
 import presentation.forms.SearchForm;
 
 public class StoreHandler implements Handler {
@@ -29,6 +31,15 @@ public class StoreHandler implements Handler {
 				gui.togglePromotions();
 			}
 		});
+		
+		if (gui.registerButton != null) gui.registerButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.err.println("Register clicked");
+				controller.loadForm("Register");	//will call mainview to takeover
+				setupRegisterFormButtons(controller.mainView.formloader.getForm());
+			}
+		});
 
 		gui.backButton.addActionListener(new ActionListener() {
 			@Override
@@ -42,7 +53,7 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.loadForm("Search");	//will call mainview to takeover
-				setupFormButtons(controller.mainView.formloader.getForm());
+				setupSearchFormButtons(controller.mainView.formloader.getForm());
 			}
 		});
 		
@@ -58,7 +69,7 @@ public class StoreHandler implements Handler {
 //		});
 	}
 	
-	public void setupFormButtons(Form theForm) {
+	public void setupSearchFormButtons(Form theForm) {
 		SearchForm form = (SearchForm) theForm;
 		
 		form.submitButton.addActionListener(new ActionListener() {
@@ -78,6 +89,36 @@ public class StoreHandler implements Handler {
 		});
 	}
 	
+	public void setupRegisterFormButtons(Form theForm) {
+		RegisterForm form = (RegisterForm) theForm;
+		
+		form.submitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				register((User)form.getData());
+			}
+		});
+		
+		form.backButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.switchTo("Store");
+			}
+		});
+	}
+	
+	public void register(User user) {		// TODO warning this function is super sketch and horrible for nwo
+		User newUser = (User) controller.mainView.formloader.getData();
+		//TODO: add to DB
+		controller.dataManager.addObject(user.getUserName(), user);	// TODO check if it's person database
+		System.out.println("Adding: "+user.getUserName()+", "+user.getPassword());
+		controller.mainView.dispose();
+		controller.initView();
+		//(PersonDBManager)((controller.dataManager))
+	}
+
 	public void resolveSearch() {
 //		dataManager.setStrategy(new DocumentDBManager());	//or instead of DB use catalog?
 //		try {

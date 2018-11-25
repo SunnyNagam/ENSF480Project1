@@ -2,6 +2,7 @@ package database;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import data.Document;
 import data.User;	//normally packages shouldn't cross-couple :/ <- but that's basically a fancy datatype, so its just like including hashmap
@@ -33,10 +34,9 @@ public class PersonDBManager implements DBManager {
 					return theUser;
 				}
 			}
-	
 		return null;
 	}
-
+	
 	@Override
 	public Document checkDocument(int key) {
 		// TODO Auto-generated method stub
@@ -47,6 +47,12 @@ public class PersonDBManager implements DBManager {
 	public ArrayList<?> getObjects() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void addObject(String key, Object obj) {
+		personDataBase.put(key, (User)obj);
+		
 	}
 	
 

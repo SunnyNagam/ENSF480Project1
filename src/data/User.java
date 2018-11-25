@@ -15,6 +15,7 @@ public class User {
 	
 	public static final String GuestUser = "6231ddd1382f8b858c5c3ac46fac283bf49883aab9fd357a94492380d9937ade"; 	//this is not
 	public static final String GuestPass = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";	//this is the SHA-256 encryption of 'password' cause I'm hilarious
+	// I aldready know 100% this is keenan, don't even have to look at the commit history
 	
 	private String fName;
 	private String lName;	

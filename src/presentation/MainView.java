@@ -77,7 +77,7 @@ public class MainView extends JFrame{
 		
 		char userT = controller.getUser().getType();
 		
-		for (int i = 0; i < views.length; i++)
+		for (int i = 0; i < views.length; i++)		// I like this --sunny
 			views[i].setUserType(userT);
 		// -------------
 	}
@@ -104,10 +104,8 @@ public class MainView extends JFrame{
 	
 	public void produceForm(String page) {
 		System.out.println("in mainview ProduceForm");
-		if (page.equals("Search")) {	//can add other checks for different strings and produce different forms because STRATEGY
-			formloader.setForm(new SearchForm());
-		}
-		
+		//can add other checks for different strings and produce different forms because STRATEGY
+		formloader.setForm(page+"Form");		// this is still stratagy right
 		panel.removeAll();
 		panel.add((Component) formloader.runForm());
 		//add(panel);

@@ -13,7 +13,7 @@ public class Controller extends Thread{
 	
 	public Controller(DocumentCatalog theDocuments) {
 		this.theDocuments = theDocuments;
-		System.out.println(theDocuments.getDocuments().get(0).getISBN());
+		//System.out.println(theDocuments.getDocuments().get(0).getISBN());
 		initView();
 		dataManager = new DataBaseManager();	//person db by default
 	}
@@ -24,7 +24,7 @@ public class Controller extends Thread{
 	}
 	
 	public void launch() {
-		User thisUser = dataManager.getUser();
+		User thisUser = dataManager.getUser();	// this might break if its not the right dataManager
 		
 		mainView.init();
 		

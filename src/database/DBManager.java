@@ -10,4 +10,5 @@ public interface DBManager {
 	public User checkCredentials(String username, String password);
 	public Document checkDocument(int key);
 	public ArrayList<?> getObjects();
+	public void addObject(String key, Object obj);
 }

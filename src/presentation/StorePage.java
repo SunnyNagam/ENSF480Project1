@@ -68,10 +68,12 @@ public class StorePage extends JPanel implements View{
 		if(showingPromotions) {
 			remove(promotionsPane);
 			add(mainPanel, BorderLayout.CENTER);
+			promotionsButton.setText("View promotions");
 		}
 		else {
 			remove(mainPanel);
 			add(promotionsPane, BorderLayout.CENTER);
+			promotionsButton.setText("Hide promotions");
 		}
 		
 		showingPromotions = !showingPromotions;
@@ -87,10 +89,12 @@ public class StorePage extends JPanel implements View{
 		JPanel botPan = new JPanel();
 		botPan.add(searchButton = new JButton("Search"));
 		
-		if (_ut != User.UnregisteredBuyer)
+		if (_ut != User.UnregisteredBuyer) {
 			botPan.add(promotionsButton = new JButton("View Promotions"));
-		else
+		}
+		else {
 			botPan.add(registerButton = new JButton("Register"));
+		}
 		
 		botPan.add(backButton = new JButton("Back"));
 		

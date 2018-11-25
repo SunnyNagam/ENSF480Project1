@@ -38,4 +38,8 @@ public class DataBaseManager {
 	{
 		return u;
 	}
+	
+	public void addObject(String key, Object obj) {
+		DB.addObject(key, obj);
+	}
 }
