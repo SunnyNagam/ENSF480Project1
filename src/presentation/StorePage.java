@@ -8,12 +8,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 import data.User;
 import data.Document;
@@ -21,6 +24,8 @@ import data.Controller;
 
 public class StorePage extends JPanel implements View{
 	public JButton searchButton, registerButton, promotionsButton, backButton;
+
+	
 	public boolean showingPromotions = false;
 	public JScrollPane promotionsPane;
 	DefaultListModel<String> promotions;
@@ -100,8 +105,30 @@ public class StorePage extends JPanel implements View{
 		
 		botPan.add(backButton = new JButton("Back"));
 		
-		add(botPan, BorderLayout.PAGE_END);
-		
+//		//this is being moved to managementpage
+		//if (_ut != User.Operator) {
+			add(botPan, BorderLayout.PAGE_END);
+			return;
+		//}
+//		// operators only, get here:
+//		
+//		JPanel topPan = new JPanel();
+//		
+//		topPan.add(addButton = new JButton("Add"));
+//		
+//		topPan.add(editButton = new JButton("Edit"));
+//		
+//		topPan.add(deleteButton = new JButton("Delete"));
+//			
+//		JPanel p = new JPanel();
+//		p.setLayout(new BoxLayout(p,BoxLayout.Y_AXIS));
+//		
+//		p.add(topPan);
+//		p.add(new JSeparator(SwingConstants.HORIZONTAL));
+//		p.add(botPan);
+//		
+//		add(p, BorderLayout.PAGE_END);
+
 	}
 	
 	@SuppressWarnings("unchecked")

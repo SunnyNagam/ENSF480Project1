@@ -96,7 +96,7 @@ public class MainView extends JFrame{
 			
 			panel.removeAll();
 			panel.add((Component) currentView);
-			System.out.println("Switched to " + index);
+			System.out.println("Switched to " + page + ", " + index);
 			//this.pack();
 			this.paintAll(this.getGraphics());
 		}

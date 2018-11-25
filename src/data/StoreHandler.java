@@ -41,8 +41,8 @@ public class StoreHandler implements Handler {
 		if (gui.registerButton != null) gui.registerButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.err.println("Register clicked");
-				controller.loadForm("Register");	//will call mainview to takeover
+			System.err.println("Register clicked");
+			controller.loadForm("Register");	//will call mainview to takeover
 				setupRegisterFormButtons(controller.mainView.formloader.getForm());
 			}
 		});
