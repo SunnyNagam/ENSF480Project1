@@ -53,6 +53,14 @@ public class DocumentDBManager implements DBManager {
 		
 		return documents;
 	}
+	
+	public ArrayList<String> getPromos() {
+		ArrayList<String> documents = new ArrayList<String>();
+		documents.addAll(promotionsData.keySet());
+		//documents.add(new Document(100, "SunJeep", 45, "The life of a legend", 2, 4, "What a time to be alive. When I was a young boy my dad told me to treat others how I would like to be treated. I found this impossible because I could never worship everyone at the same time, doesn't even make sence. But that was classic papa patel, another time he told me \"Sunjeep my boy, if you want to win my enternal affection you'll win the 4th NASA childrens Engineering competition for your old man\". I neither wanted or needed my fathers approval at that time. But being the ambitious young sport I was, I decided to go for it. It was the competition of the year, every school's brightest engineers were there. The cream of the crop. To win this would take great determination. I would practice daily for 40 hours, I did a million pushups, a million situps, ran a million miles, and mined bitcoin with my raw brain power alone and a notepad. I was only 7 at the time so this was more difficult than it would of been now. The day of the competition had finally arrived. Luckily for your readers the rest of this story is amazingly short, as I walked into the judgeing room I was instantly greeted with a chorus of cheers. The croud went wild. The engineers offered me first place without any competition. The other contestans needless to say were furious, but once they saw me they instantly understood and quit school altoghether, knowing the rest of thier career would just be living in my shadow. In fact NASA offered me a 4 month internship as one of their lead engineer, unbeknownst to them I would take over as CEO and apolo asternaut during my 4 month internship, ultimately quitting that job because of creative differences."));
+		
+		return documents;
+	}
 
 	@Override
 	public void addObject(String key, Object obj) {

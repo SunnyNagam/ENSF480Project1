@@ -31,7 +31,7 @@ public class StoreHandler implements Handler {
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("Promotions clicked");
 				if(controller.getUser().isSubscribed())
-					gui.togglePromotions();
+					gui.togglePromotions(controller.theDocuments.getPromotions());
 				else {
 					JOptionPane.showMessageDialog(controller.mainView, "Please register to view promotions.");
 				}
