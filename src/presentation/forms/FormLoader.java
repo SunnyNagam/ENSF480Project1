@@ -1,13 +1,19 @@
 package presentation.forms;
 
+import java.util.HashMap;
+
 import javax.swing.JPanel;
 
 public class FormLoader {
+	HashMap<String, Form> formList;
 	Form theForm;
 	
 	//theForm is set to searchForm, by default
 	public FormLoader() {
-		theForm = new SearchForm();
+		formList = new HashMap<String, Form>();
+		
+		formList.put("SearchForm", new SearchForm());
+		formList.put("RegisterForm", new RegisterForm());
 	}
 	
 	public void setForm(Form newForm) {
@@ -19,9 +25,25 @@ public class FormLoader {
 		theForm = newForm;
 	}
 	
+	public void setForm(String name) {
+		System.out.println("Switche to: "+name);
+		theForm = formList.get(name);
+	}
+	
 	public Form runForm() {
 		theForm.loadForm();
 		return theForm;
 	}
 	
+	public Object getData() {
+		return theForm.getData();
+	}
+	
+	public Form getForm() {
+		return theForm;
+	}
+	
+	public void displayResults(String val) {
+		theForm.displayResults(val);
+	}
 }

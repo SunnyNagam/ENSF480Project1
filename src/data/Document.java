@@ -24,6 +24,17 @@ public class Document {
 		this.contents = contents;
 		this.available = true;
 	}
+	public Document(Integer num, String authors, Integer stock, String title, Integer version, Integer edition, String contents) {
+		this.ISBN = num;
+		this.authors = new ArrayList<String>();
+		this.authors.add(authors);
+		this.stock = stock;
+		this.title = title;
+		this.version = version;
+		this.edition = edition;
+		this.contents = contents;
+		this.available = true;
+	}
 	@Override
 	public String toString() {
 		String s = String.format("%s%s%s%s%s", 
@@ -49,7 +60,7 @@ public class Document {
 	}
 	
 	public final String getISBN() {
-		return String.format("%10d\t", ISBN);
+		return String.format("%d", ISBN);
 	}
 
 	public final String getAuthors() {

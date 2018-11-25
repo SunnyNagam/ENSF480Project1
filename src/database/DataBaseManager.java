@@ -1,5 +1,6 @@
 package database;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.Document;
@@ -24,12 +25,21 @@ public class DataBaseManager {
 		u = DB.checkCredentials(username, password);
 	}
 	
-	public Document getDoc(int key) {
+	public Document getDoc(String key) {
 		d = DB.checkDocument(key);
 		return d;
 	}
+	
+	public ArrayList<?> getObjects() {
+		return DB.getObjects();
+	}
+	
 	public User getUser()
 	{
 		return u;
+	}
+	
+	public void addObject(String key, Object obj) {
+		DB.addObject(key, obj);
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public class StorePage extends JPanel implements View{
 	JList<String> promotionsList;
 	public JPanel mainPanel;
 	
-	private ArrayList<Document> promos;	
+	private ArrayList<String> promos;	
 	
 	public StorePage() {
 		// TODO Auto-generated constructor stub
@@ -39,15 +40,15 @@ public class StorePage extends JPanel implements View{
 		add(mainPanel, BorderLayout.CENTER);
 		
 		//buttons from here
-		promos = new ArrayList<Document>();
+		promos = new ArrayList<String>();
 		
 		promotions = new DefaultListModel<String>();
 		promotionsList = new JList<String> (promotions);
 		promotionsList.setFont(new Font("menlo",Font.PLAIN,12));
 			
-		Iterator<Document> entry = promos.iterator();
+		Iterator<String> entry = promos.iterator();
 		while( entry.hasNext() ) {
-		    promotions.addElement(entry.next().toString());
+		    promotions.addElement(entry.next());
 		}
 		
 		promotionsPane = new JScrollPane(promotionsList);
@@ -64,14 +65,17 @@ public class StorePage extends JPanel implements View{
 		// TODO Auto-generated method stub
 		
 	}
-	public void togglePromotions() {
+	public void togglePromotions(ArrayList<Object> promos) {
 		if(showingPromotions) {
 			remove(promotionsPane);
 			add(mainPanel, BorderLayout.CENTER);
+			promotionsButton.setText("View promotions");
 		}
 		else {
 			remove(mainPanel);
+			updateData(promos);				// observer pattern oh yea baby
 			add(promotionsPane, BorderLayout.CENTER);
+			promotionsButton.setText("Hide promotions");
 		}
 		
 		showingPromotions = !showingPromotions;
@@ -87,10 +91,12 @@ public class StorePage extends JPanel implements View{
 		JPanel botPan = new JPanel();
 		botPan.add(searchButton = new JButton("Search"));
 		
-		if (_ut != User.UnregisteredBuyer)
+		if (_ut != User.UnregisteredBuyer ) {
 			botPan.add(promotionsButton = new JButton("View Promotions"));
-		else
+		}
+		else {
 			botPan.add(registerButton = new JButton("Register"));
+		}
 		
 		botPan.add(backButton = new JButton("Back"));
 		
@@ -102,9 +108,10 @@ public class StorePage extends JPanel implements View{
 	@Override
 	public void updateData(ArrayList<Object> arr) {
 		try {
-			promos = (ArrayList<Document>) arr.clone();
+			promos = (ArrayList<String>) arr.clone();
+			promotions.clear();
 			promos.forEach(entry -> {
-				if ( entry.isVisible() )
+				//if ( entry.isVisible() )
 					promotions.addElement(entry.toString());
 			});
 			//TODO idk if thats all you need to do to update the list contianig promotions

@@ -1,14 +1,20 @@
 package presentation.forms;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SearchForm extends JPanel implements Form  {
 
 	JPanel SearchForm;
 	public JTextField searchField;
 	public JButton submitButton, backButton;
+	public JList resultList;
+	public DefaultListModel listModel;
 	
 	@Override
 	public void loadForm() {
@@ -20,9 +26,17 @@ public class SearchForm extends JPanel implements Form  {
 		searchField = new JTextField(15);
 		submitButton = new JButton("Submit");
 		backButton = new JButton("Cancel");
+		
+		listModel = new DefaultListModel();
+		resultList = new JList(listModel);
+		resultList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		resultList.setSelectedIndex(0);
+		resultList.setVisibleRowCount(10);
+		JScrollPane listScrollPane = new JScrollPane(resultList);
 		SearchForm.add(searchField);
 		SearchForm.add(submitButton);
 		SearchForm.add(backButton);
+		SearchForm.add(listScrollPane);
 		add(SearchForm, BorderLayout.CENTER);
 		
 		//return this;
@@ -32,9 +46,22 @@ public class SearchForm extends JPanel implements Form  {
 	@Override
 	public Object getData() {
 		// TODO get the search value, send it back to the controller to query the document DB
-		return null;
+		String queryVal;
+		queryVal = searchField.getText();
+		System.out.println("Query: "+queryVal);
+		return (Object) queryVal;
+				
 	}
 
-	
+	public void displayResults(String book) {
+		if (book == null)
+		{
+			listModel.clear();
+		}
+		else
+		{
+			listModel.addElement(book);
+		}
+	}
 	
 }

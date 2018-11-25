@@ -2,14 +2,18 @@
 package data;
 
 import database.DataBaseManager;
+import database.DocumentDBManager;
 import presentation.MainView;
 
 public class Controller extends Thread{
+	DocumentCatalog theDocuments;
 	MainView mainView;
 	DataBaseManager dataManager;
 	HandlerManager handlerManager;
 	
-	public Controller() {
+	public Controller(DocumentCatalog theDocuments) {
+		this.theDocuments = theDocuments;
+		//System.out.println(theDocuments.getDocuments().get(0).getISBN());
 		initView();
 		dataManager = new DataBaseManager();	//person db by default
 	}
@@ -20,7 +24,7 @@ public class Controller extends Thread{
 	}
 	
 	public void launch() {
-		User thisUser = dataManager.getUser();
+		User thisUser = dataManager.getUser();	// this might break if its not the right dataManager
 		
 		mainView.init();
 		
@@ -47,8 +51,8 @@ public class Controller extends Thread{
 		//mainView.formloader.setForm(page);
 		mainView.produceForm(page);//load the form onto view
 	}
-
-	public boolean validateLogin(String userName, String password) {	// TODO actually check the Database
+	
+	public boolean validateLogin(String userName, String password) {
 		// TODO: handle special case: username = "Guest" and pasword = "none"
 		dataManager.resolveCredientials(userName, password);
 		if (dataManager.getUser() != null)
