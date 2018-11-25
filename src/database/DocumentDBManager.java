@@ -8,8 +8,8 @@ import data.User;
 
 public class DocumentDBManager implements DBManager {
 
-	HashMap<Integer, Document> documentDataBase;	//ISBN hashed to document
-	public HashMap<Integer,Document> promotionsData;		//
+	HashMap<String, Document> documentDataBase;	//ISBN hashed to document
+	public HashMap<String,Document> promotionsData;		//
 	
 	public DocumentDBManager() {
 		documentDataBase = new HashMap<String, Document>();
@@ -20,7 +20,7 @@ public class DocumentDBManager implements DBManager {
 		authors123.add("Mickey Mouse");
 		documentDataBase.put("DisneyLand", new Document(123, authors123, 3, "Disneyland", 1, 1, contents123));
 		
-		promotionsData = new HashMap<Integer,Document>();
+		promotionsData = new HashMap<String,Document>();
 
 		//promotionsData.put("Yikes Patel, a hero's jouney.", "$12.99");
 		//promotionsData.put("LouJeep McJeep, making of a criminal.", "$34.99");
@@ -48,9 +48,9 @@ public class DocumentDBManager implements DBManager {
 	// yeesh
 	public void updatePromos(boolean add, Document d) {
 		if (!add) 
-			promotionsData.remove(Integer.valueOf(d.getISBN()), d);
+			promotionsData.remove(d.getTitle(), d);
 		else
-			promotionsData.put(Integer.valueOf(d.getISBN()), d);
+			promotionsData.put(d.getTitle(), d);
 	}
   
 	@Override
