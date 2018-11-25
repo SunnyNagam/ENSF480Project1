@@ -10,5 +10,7 @@ public interface Form {
 	 */
 	public Object getData();
 	
+	public void sendData(Object obj);
+	
 	public void displayResults(String something);
 }

@@ -37,7 +37,7 @@ public class Document {
 	}
 	@Override
 	public String toString() {
-		String s = String.format("%s%s%s%s%s", 
+		String s = String.format("%s\t%s\t%s\t%s\t%s", 
 				getISBN(), getTitle(), getEdition(), getVersion(), getStock());
 		return s;
 	}
@@ -77,6 +77,9 @@ public class Document {
 	 */
 	public final String getStock() {
 		return (stock < 10) ? String.format("%1d\t",stock) :  "10+\t";	// wow fancy 
+	}
+	public final String getTrueStock() {
+		return String.valueOf(stock);
 	}
 
 	public final String getTitle() {

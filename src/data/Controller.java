@@ -78,10 +78,12 @@ public class Controller extends Thread{
 				theDocuments.addPromoDocument(d);
 			
 			break;
-			
-		case Constants.editDoc:
 		case Constants.updateDoc:
-			
+			Document d2 = (Document) newObj;
+			theDocuments.update(d2);
+			break;
+		case Constants.deleteDoc:
+			//TODO
 			
 			break;
 		}

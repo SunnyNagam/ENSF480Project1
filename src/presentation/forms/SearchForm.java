@@ -63,5 +63,8 @@ public class SearchForm extends JPanel implements Form  {
 			listModel.addElement(book);
 		}
 	}
-	
+	@Override
+	public void sendData(Object obj) {
+		
+	}
 }

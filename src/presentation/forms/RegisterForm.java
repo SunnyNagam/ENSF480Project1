@@ -50,4 +50,8 @@ public class RegisterForm extends JPanel implements Form  {
 	public void displayResults(String something) {
 		System.out.println("In register.");
 	}
+	@Override
+	public void sendData(Object obj) {
+		
+	}
 }

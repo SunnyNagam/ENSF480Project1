@@ -41,7 +41,15 @@ public class OperatingHandler implements Handler{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("edit button pressed");
 				//get selected doc
-				//update inv
+				Document d = gui.catalogueList.getSelectedValue();
+				System.out.println("Selected : " + d);
+				
+				controller.loadForm("AddDoc");
+				setupUpdateFormButtons(controller.mainView.formloader.getForm(), controller);
+				controller.mainView.formloader.getForm().sendData(d);
+				//so it can still be found by title
+				((AddDocForm)controller.mainView.formloader.getForm()).titleBox.setEditable(false);
+				// this is weid and always updates late after a click and idk whats happnin with it
 			}
 		});
 		
@@ -61,8 +69,9 @@ public class OperatingHandler implements Handler{
 		form.submitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println( (Document)theForm.getData() );
+				System.out.println( (Document)theForm.getData()  + "   Added");
 				c.update(Constants.addDoc, theForm.getData());
+				c.switchTo("Management");
 			}
 		});
 		
@@ -73,4 +82,24 @@ public class OperatingHandler implements Handler{
 			}
 		});
 	}
+	public void setupUpdateFormButtons(Form theForm, Controller c) {
+		AddDocForm form = (AddDocForm) theForm;
+		
+		form.submitButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println( (Document)theForm.getData() + "   Updated");
+				c.update(Constants.updateDoc, theForm.getData());
+				c.switchTo("Management");
+			}
+		});
+		
+		form.backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				c.switchTo("Management");
+			}
+		});
+	}
+
 }
