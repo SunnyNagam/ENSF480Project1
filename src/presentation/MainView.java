@@ -110,7 +110,7 @@ public class MainView extends JFrame{
 		
 		panel.removeAll();
 		panel.add((Component) formloader.runForm());
-		add(panel);
+		//add(panel);
 		this.paintAll(this.getGraphics());
 	}
 }

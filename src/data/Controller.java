@@ -51,47 +51,7 @@ public class Controller extends Thread{
 		//mainView.formloader.setForm(page);
 		mainView.produceForm(page);//load the form onto view
 	}
-	//this assumes that the correct DB is set when you switched to storepage(document DB)
-	public void resolveSearch() {
-//		dataManager.setStrategy(new DocumentDBManager());	//or instead of DB use catalog?
-//		try {
-//			int query = Integer.parseInt((String) getFormData());
-//			if (dataManager.getDoc(query) != null)
-//			{
-//				Document theDocument = dataManager.getDoc(query);
-//				mainView.formloader.displayResults(theDocument.toString());
-//			}
-//			else
-//			{
-//				System.out.println("No copies");
-//			}
-//		}
-//		catch (NumberFormatException e)
-//		{
-//			System.out.println("No copies");
-//
-//		}
-		//int query = Integer.parseInt((String) getFormData());
-		mainView.formloader.displayResults(null);	//clear the list
-		for (int i = 0; i < theDocuments.getDocuments().size(); i++) {
-			if (theDocuments.getDocuments().get(i).getISBN().equals((String) getFormData()))
-			{
-				System.out.println("Success");
-				mainView.formloader.displayResults(theDocuments.getDocuments().get(i).toString());
-				break;
-			}
-		}
-		
-		System.out.println((String) getFormData());
-		
-	}
 	
-	private Object getFormData() {
-		return mainView.formloader.getData();
-	}
-	
-	
-
 	public boolean validateLogin(String userName, String password) {
 		// TODO: handle special case: username = "Guest" and pasword = "none"
 		dataManager.resolveCredientials(userName, password);

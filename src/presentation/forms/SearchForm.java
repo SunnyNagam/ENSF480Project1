@@ -48,6 +48,7 @@ public class SearchForm extends JPanel implements Form  {
 		// TODO get the search value, send it back to the controller to query the document DB
 		String queryVal;
 		queryVal = searchField.getText();
+		System.out.println("Query: "+queryVal);
 		return (Object) queryVal;
 				
 	}

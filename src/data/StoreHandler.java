@@ -65,9 +65,58 @@ public class StoreHandler implements Handler {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.resolveSearch();
+				resolveSearch();
+			}
+		});
+		
+		form.backButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.switchTo("Store");
 			}
 		});
 	}
+	
+	public void resolveSearch() {
+//		dataManager.setStrategy(new DocumentDBManager());	//or instead of DB use catalog?
+//		try {
+//			int query = Integer.parseInt((String) getFormData());
+//			if (dataManager.getDoc(query) != null)
+//			{
+//				Document theDocument = dataManager.getDoc(query);
+//				mainView.formloader.displayResults(theDocument.toString());
+//			}
+//			else
+//			{
+//				System.out.println("No copies");
+//			}
+//		}
+//		catch (NumberFormatException e)
+//		{
+//			System.out.println("No copies");
+//
+//		}
+		//int query = Integer.parseInt((String) getFormData());
+		controller.mainView.formloader.displayResults(null);	//clear the list
+		for (int i = 0; i < controller.theDocuments.getDocuments().size(); i++) {
+			if (controller.theDocuments.getDocuments().get(i).getISBN().equals((String) getFormData()) ||
+					controller.theDocuments.getDocuments().get(i).getTitle().contains((String) getFormData()))
+			{
+				System.out.println("Success");
+				controller.mainView.formloader.displayResults(controller.theDocuments.getDocuments().get(i).toString());
+				break;
+			}
+		}
+		
+		System.out.println((String) getFormData());
+		
+	}
+	
+	private Object getFormData() {
+		return controller.mainView.formloader.getData();
+	}
+	
+	
 
 }
