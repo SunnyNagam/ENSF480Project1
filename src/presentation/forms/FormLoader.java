@@ -14,6 +14,7 @@ public class FormLoader {
 		
 		formList.put("SearchForm", new SearchForm());
 		formList.put("RegisterForm", new RegisterForm());
+		formList.put("AddDocForm", new AddDocForm());
 	}
 	
 	public void setForm(Form newForm) {

@@ -4,8 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import presentation.ManagementPage;
-import presentation.StorePage;
 import presentation.View;
+import presentation.forms.AddDocForm;
+import presentation.forms.Form;
 
 public class OperatingHandler implements Handler{
 
@@ -30,6 +31,8 @@ public class OperatingHandler implements Handler{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Add button pressed");
+				controller.loadForm("AddDoc");
+				setupAddFormButtons(controller.mainView.formloader.getForm(), controller);
 			}
 		});
 		
@@ -37,6 +40,8 @@ public class OperatingHandler implements Handler{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("edit button pressed");
+				//get selected doc
+				//update inv
 			}
 		});
 		
@@ -44,8 +49,28 @@ public class OperatingHandler implements Handler{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("delete button pressed");
+				//get selected doc
+				//update inv
 			}
 		});
 	}
 	
+	public void setupAddFormButtons(Form theForm, Controller c) {
+		AddDocForm form = (AddDocForm) theForm;
+		
+		form.submitButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println( (Document)theForm.getData() );
+				c.update(Constants.addDoc, theForm.getData());
+			}
+		});
+		
+		form.backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				c.switchTo("Management");
+			}
+		});
+	}
 }
