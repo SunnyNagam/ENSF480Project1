@@ -30,6 +30,14 @@ public class Document {
 				getISBN(), getTitle(), getEdition(), getVersion(), getStock());
 		return s;
 	}
+	@Override
+	public boolean equals(Object d) throws ClassCastException{
+		Document other = (Document) d;
+		if (this.ISBN == other.ISBN && this.contents.equals(other.contents))
+			return true;
+		else
+			return false;
+	}
 //	Getters
 //	__________________________
 	public final boolean isVisible() { 
