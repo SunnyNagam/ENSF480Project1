@@ -18,7 +18,7 @@ This boi is our project, many nice *features*, much cool __buttons__
   - [x] search for a book, 
   - [ ] place an order, and 
   - [ ] make payments.
-  - [ ] They should also be able to register as a registered-buyer, if they wish.
+  - [x] They should also be able to register as a registered-buyer, if they wish.
 
 - [ ] RQ6: Registered-Buyers should be able to 
   - [x] have access to the promotions list that regularly will be updated and 
