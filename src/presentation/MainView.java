@@ -34,7 +34,7 @@ public class MainView extends JFrame{
 		
 		panel = new JPanel();
 		panel.add((Component) currentView);
-		add(panel);	// sketchy af
+		add(panel);
 		
 		getRootPane().setDefaultButton(((LoginPage)currentView).submitButton);
 		formloader = new FormLoader();	//creates a search form by default
