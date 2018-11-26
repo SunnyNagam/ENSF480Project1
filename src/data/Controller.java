@@ -83,8 +83,8 @@ public class Controller extends Thread{
 			theDocuments.update(d2);
 			break;
 		case Constants.deleteDoc:
-			//TODO
-			
+			Document d3 = (Document) newObj;
+			theDocuments.remove(d3);
 			break;
 		}
 		

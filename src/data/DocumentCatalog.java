@@ -37,11 +37,13 @@ public class DocumentCatalog {
 	}
 	public void update(Document d) {
 		documents.forEach(doc ->{
-			if (doc.getTitle().equals(d.getTitle())) {
-				doc = d;	//might need to clone here
-			}
+			if (doc.getTitle().equals(d.getTitle())) doc.copy(d);
 		});
 		//go through promos and make sure each one is supposed to be there
-		//TODO
+		//TODO HEY THIS IS AN ACTUAL ONE -- PROMOS 
+	}
+
+	public void remove(Document d) {
+		documents.remove(d);
 	}
 }
