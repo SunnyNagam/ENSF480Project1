@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DocumentCatalog {
 	private ArrayList<Document> documents;	//the list of documents in the DB
 	private ArrayList<String> promotions;	//the list of promotions in the DB
-	
+	public long updateTime = System.nanoTime();
 	public DocumentCatalog(ArrayList<Document> documents, ArrayList<String> promotions) {
 		this.documents = documents;
 		this.promotions = promotions;
@@ -15,7 +15,10 @@ public class DocumentCatalog {
 		documents.add(aDocument);
 	}
 	public void addPromoDocument(Document aDocument) {
-		promotions.add(aDocument.getTitle());
+		System.out.println("adding to promos");
+		if(!promotions.contains(aDocument.getTitle()) ) {
+			promotions.add(aDocument.getTitle());
+		}
 	}
 	public void removeDocument(Document aDocument) {
 		documents.remove(aDocument);
@@ -38,10 +41,22 @@ public class DocumentCatalog {
 	public void update(Document d) {
 
 		documents.forEach(doc ->{
-			if (doc.getTitle().equals(d.getTitle())) doc.copy(d);
+			if (doc.getTitle().equals(d.getTitle())){
+				doc.copy(d);
+				if (d.promotional)
+					addPromoDocument(d);
+				else
+					removePromoDocument(d);
+			}
 		});
 		//go through promos and make sure each one is supposed to be there
 		//TODO HEY THIS IS AN ACTUAL ONE -- PROMOS 
+	}
+
+	private void removePromoDocument(Document d) {
+		if (promotions.contains(d.getTitle()))
+			promotions.remove(d.getTitle());
+		
 	}
 
 	public void remove(Document d) {

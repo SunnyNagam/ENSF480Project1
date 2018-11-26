@@ -11,7 +11,6 @@ public class DataBaseManager {
 	DBManager DB;
 	User u;
 	Document d;
-	
 	ArrayList<Payment> transactionRecord;
 	
 

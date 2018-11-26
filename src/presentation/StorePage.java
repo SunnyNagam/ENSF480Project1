@@ -82,7 +82,7 @@ public class StorePage extends JPanel implements View{
 			add(promotionsPane, BorderLayout.CENTER);
 			promotionsButton.setText("Hide promotions");
 		}
-		
+		System.out.println(promos.size());
 		showingPromotions = !showingPromotions;
 		this.paintAll(this.getGraphics());
 		//this.repaint();
@@ -146,5 +146,6 @@ public class StorePage extends JPanel implements View{
 		} catch (Exception e) {
 			System.err.println("Error Updating Store Data...\n" + e.getMessage());
 		}
+		System.out.println(promotions.size());
 	}
 }

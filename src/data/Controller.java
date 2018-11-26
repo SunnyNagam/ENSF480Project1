@@ -1,6 +1,8 @@
 
 package data;
 
+import javax.swing.JOptionPane;
+
 import database.DataBaseManager;
 import database.DocumentDBManager;
 import presentation.MainView;
@@ -25,12 +27,17 @@ public class Controller extends Thread{
 	
 	public void launch() {
 		User thisUser = dataManager.getUser();	// this might break if its not the right dataManager
-		
+
 		mainView.init();
 		
 		handlerManager = new HandlerManager(this, thisUser);	//only create and launch a handler and mainview if you are a user, what about ordinary buyers?
 		
 		switchTo("Home");
+		
+		if (thisUser.getLastUpdated() < theDocuments.updateTime && thisUser.isSubscribed())
+		{
+			JOptionPane.showMessageDialog(mainView, "You have new promotions!");
+		}
 	}
 	public final User getUser() {
 		return dataManager.getUser();

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,6 +21,9 @@ public class HomePage extends JPanel implements View{
 				
 		JPanel panel = new JPanel();
 		panel.add(test);
+		
+		//JCheckBox = new JCheckBox();
+		
 				
 		add(panel, BorderLayout.CENTER);
 		
