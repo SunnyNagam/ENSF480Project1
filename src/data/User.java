@@ -23,6 +23,8 @@ public class User {
 	private String password;
 	private char userType;	//operator, manager, etc.
 	private boolean subscribed;	// for the promotions
+	private long lastUpdated;
+	
 	public boolean isSubscribed() {
 		return subscribed;
 	}
@@ -33,11 +35,17 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;
-		
+		lastUpdated = System.nanoTime();
 		this.subscribed = (userType != UnregisteredBuyer);
 	}
 	public void toggleSubscription() {
 		this.subscribed = !this.subscribed;
+	}
+	public long getLastUpdated() {
+		return lastUpdated;
+	}
+	public void setLastUpdated(long lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 	public final String getUserName() {
 		return userName;

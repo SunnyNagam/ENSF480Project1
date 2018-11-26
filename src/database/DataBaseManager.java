@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.Document;
+import data.Payment;
 import data.User;
 
 public class DataBaseManager {
 	DBManager DB;
 	User u;
 	Document d;
+	ArrayList<Payment> transactionRecord;
 	
 
 	public DataBaseManager() {

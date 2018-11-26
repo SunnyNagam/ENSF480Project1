@@ -30,8 +30,10 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.err.println("Promotions clicked");
-				if(controller.getUser().isSubscribed())
-					gui.togglePromotions(controller.theDocuments.getPromotions());
+				if (controller.getUser().isSubscribed()) {
+					gui.togglePromotions( controller.theDocuments.getPromotions() );
+					controller.getUser().setLastUpdated(System.nanoTime());
+				}
 				else {
 					JOptionPane.showMessageDialog(controller.mainView, "Please register to view promotions.");
 				}

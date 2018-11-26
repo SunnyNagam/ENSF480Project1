@@ -12,6 +12,7 @@ public class DocumentDBManager implements DBManager {
 	HashMap<String, Document> documentDataBase;	//ISBN hashed to document
 	public HashMap<String,Document> promotionsData;		//
 	
+	
 	public DocumentDBManager() {
 		documentDataBase = new HashMap<String, Document>();
 		ArrayList<String> authors123 = new ArrayList<String>();

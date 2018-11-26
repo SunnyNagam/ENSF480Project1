@@ -101,6 +101,8 @@ public class OperatingHandler implements Handler{
 				c.update(Constants.updateDoc, theForm.getData());
 				c.switchTo("Management");
 				c.mainView.currentView.updateData(c.theDocuments.getCatalogue());
+				c.theDocuments.updateTime = System.nanoTime();
+				c.getUser().setLastUpdated(c.theDocuments.updateTime + 1);
 			}
 		});
 		
