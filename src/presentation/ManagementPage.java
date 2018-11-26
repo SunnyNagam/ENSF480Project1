@@ -42,7 +42,7 @@ public class ManagementPage extends JPanel implements View{
 		
 		catalogueModel = new DefaultListModel<Document>();
 		catalogueList = new JList<Document> (catalogueModel);
-		catalogueList.setFont(new Font("menlo",Font.PLAIN,12));
+		catalogueList.setFont(new Font("courier",Font.PLAIN,12));
 			
 		Iterator<Document> entry = catalogue.iterator();
 		while( entry.hasNext() ) {
