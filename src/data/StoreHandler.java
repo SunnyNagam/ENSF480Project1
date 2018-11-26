@@ -59,7 +59,7 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.loadForm("Search");	//will call mainview to takeover
-				setupSearchFormButtons(controller.mainView.formloader.getForm());
+				setupSearchFormButtons(gui, controller.mainView.formloader.getForm());
 			}
 		});
 		
@@ -75,7 +75,7 @@ public class StoreHandler implements Handler {
 //		});
 	}
 	
-	public void setupSearchFormButtons(Form theForm) {
+	public void setupSearchFormButtons(View gui, Form theForm) {
 		SearchForm form = (SearchForm) theForm;
 		
 		form.submitButton.addActionListener(new ActionListener() {
@@ -91,6 +91,8 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.switchTo("Store");
+				if (((StorePage) gui).showingPromotions)	//if showing promotions, turn them off
+					((StorePage) gui).togglePromotions(controller.theDocuments.getPromotions());
 			}
 		});
 	}
@@ -111,6 +113,8 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.switchTo("Store");
+				if (((StorePage) controller.mainView.currentView).showingPromotions)	//if showing promotions, turn them off
+					((StorePage) controller.mainView.currentView).togglePromotions(controller.theDocuments.getPromotions());
 			}
 		});
 	}
@@ -148,7 +152,9 @@ public class StoreHandler implements Handler {
 		controller.mainView.formloader.displayResults(null);	//clear the list
 		for (int i = 0; i < controller.theDocuments.getDocuments().size(); i++) {
 			if (controller.theDocuments.getDocuments().get(i).getISBN().equals((String) getFormData()) ||
-					controller.theDocuments.getDocuments().get(i).getTitle().contains((String) getFormData()))
+					controller.theDocuments.getDocuments().get(i).getTitle().contains((String) getFormData()) ||
+					controller.theDocuments.getDocuments().get(i).getContents().contains((String) getFormData()) ||
+					controller.theDocuments.getDocuments().get(i).getAuthors().contains((String) getFormData()) )
 			{
 				System.out.println("Success");
 				controller.mainView.formloader.displayResults(controller.theDocuments.getDocuments().get(i).toString());

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import database.PersonDBManager;
 import presentation.HomePage;
+import presentation.StorePage;
 import presentation.View;
 
 public class HomeHandler implements Handler {
@@ -26,6 +27,8 @@ public class HomeHandler implements Handler {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("Store clicked");
 				controller.switchTo("Store");
+				if (((StorePage) controller.mainView.currentView).showingPromotions)	//if showing promotions, turn them off
+					((StorePage) controller.mainView.currentView).togglePromotions(controller.theDocuments.getPromotions());
 			}
 		});
 		
