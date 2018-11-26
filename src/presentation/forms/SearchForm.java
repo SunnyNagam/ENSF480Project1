@@ -18,6 +18,7 @@ public class SearchForm extends JPanel implements Form  {
 	
 	@Override
 	public void loadForm() {
+		this.removeAll();
 		setLayout(new BorderLayout());
 		
 		SearchForm = new JPanel();
@@ -63,5 +64,8 @@ public class SearchForm extends JPanel implements Form  {
 			listModel.addElement(book);
 		}
 	}
-	
+	@Override
+	public void sendData(Object obj) {
+		
+	}
 }

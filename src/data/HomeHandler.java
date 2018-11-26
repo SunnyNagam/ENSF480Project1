@@ -35,6 +35,7 @@ public class HomeHandler implements Handler {
 			public void actionPerformed(ActionEvent e) {
 				//System.err.println("Manage clicked");
 				controller.switchTo("Management");
+				controller.mainView.currentView.updateData(controller.theDocuments.getCatalogue());
 			}
 		});
 		

@@ -18,6 +18,7 @@ public class RegisterForm extends JPanel implements Form  {
 	
 	@Override
 	public void loadForm() {
+		this.removeAll();
 		setLayout(new BorderLayout());
 		
 		RegisterForm = new JPanel();
@@ -49,5 +50,9 @@ public class RegisterForm extends JPanel implements Form  {
 	@Override
 	public void displayResults(String something) {
 		System.out.println("In register.");
+	}
+	@Override
+	public void sendData(Object obj) {
+		
 	}
 }

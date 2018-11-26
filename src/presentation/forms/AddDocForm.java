@@ -29,6 +29,7 @@ public class AddDocForm extends JPanel implements Form {
 	
 	@Override
 	public void loadForm() {
+		this.removeAll();
 	setLayout(new BorderLayout());
 		
 		addDocumentForm = new JPanel();
@@ -99,7 +100,7 @@ public class AddDocForm extends JPanel implements Form {
 		}
 		
 		ArrayList<String> authors = new ArrayList<String>
-			(Arrays.asList(authorsBox.getText().split(",")));
+			(Arrays.asList(authorsBox.getText().split(", ")));
 		
 		String title, content;
 		
@@ -133,5 +134,25 @@ public class AddDocForm extends JPanel implements Form {
 		
 		addDocumentForm.add(temp);
 	}
+	@Override
+	public void sendData(Object obj) {
+		try {
+		Document d = (Document) obj;
+		isbnBox 		.setText(d.getISBN());
+		titleBox 		.setText(d.getTitle());
+		authorsBox 		.setText(d.getAuthors());
+		versionBox 		.setText(d.getVersion());
+		editionBox 		.setText(d.getEdition());
+		stockBox 		.setText(d.getTrueStock());
+		contentsBox 	.setText(d.getContents());
+		
+		availableBox.setSelected(d.isVisible());
 
+		promoBox.setSelected(d.promotional);
+		
+		} catch(Exception e) {
+			
+		}
+		//set text
+	}
 }
