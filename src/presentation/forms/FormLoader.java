@@ -15,6 +15,7 @@ public class FormLoader {
 		formList.put("SearchForm", new SearchForm());
 		formList.put("RegisterForm", new RegisterForm());
 		formList.put("AddDocForm", new AddDocForm());
+		formList.put("Order", new OrderForm());
 	}
 	
 	public void setForm(Form newForm) {
@@ -35,6 +36,9 @@ public class FormLoader {
 		if (name.equals("AddDocForm")) {
 			formList.remove(name);
 			formList.put(name, new AddDocForm());
+		} else if (name.equals("Order")) {
+			formList.remove(name);
+			formList.put(name, new OrderForm());
 		}
 	}
 	

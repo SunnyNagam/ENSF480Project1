@@ -21,7 +21,7 @@ public class AddDocForm extends JPanel implements Form {
 
 	JPanel addDocumentForm;
 	public JTextField isbnBox, titleBox, authorsBox, 
-			versionBox, editionBox, stockBox, contentsBox;
+			versionBox, editionBox, stockBox, contentsBox, priceBox;
 	
 	public JCheckBox availableBox,promoBox; 
 	public JButton submitButton, backButton;
@@ -42,6 +42,7 @@ public class AddDocForm extends JPanel implements Form {
 		versionBox 		= new JTextField(15);
 		editionBox 		= new JTextField(15);
 		stockBox 		= new JTextField(15);
+		priceBox 		= new JTextField(15);
 		contentsBox 	= new JTextField(30);
 		availableBox 	= new JCheckBox();
 		availableBox.setSelected(true);
@@ -57,6 +58,7 @@ public class AddDocForm extends JPanel implements Form {
 		addInputBox(versionBox,		"Version");
 		addInputBox(editionBox,		"Edition");
 		addInputBox(stockBox,		"Stock  ");
+		addInputBox(priceBox,		"Stock  ");
 		addInputBox(contentsBox,	"Content");
 		addInputBox(availableBox,	"Visible");
 
@@ -77,6 +79,7 @@ public class AddDocForm extends JPanel implements Form {
 	@Override
 	public Object getData() {
 		Integer isbn, version, edition, stock;
+		double price;
 		//try-catches gaurd agaisnt yikes input, everything else should be checked by controller or DB
 		try {
 			isbn = Integer.valueOf(isbnBox.getText());
@@ -87,6 +90,11 @@ public class AddDocForm extends JPanel implements Form {
 			stock = Integer.valueOf(stockBox.getText());
 		} catch (Exception e) {
 			stock = 0;
+		}
+		try {
+			price = Integer.valueOf(priceBox.getText());
+		} catch (Exception e) {
+			price = 0;
 		}
 		try {
 			version = Integer.valueOf(versionBox.getText());
@@ -107,7 +115,7 @@ public class AddDocForm extends JPanel implements Form {
 		title = titleBox.getText();
 		content = contentsBox.getText();
 		
-		Document d = new Document(isbn, authors, stock, title, version, edition, content);
+		Document d = new Document(isbn, authors, stock, title, version, edition, content, price);
 		
 		d.Available( availableBox.isSelected() );
 		d.promotional = promoBox.isSelected();
@@ -144,6 +152,7 @@ public class AddDocForm extends JPanel implements Form {
 		versionBox 		.setText(d.getVersion());
 		editionBox 		.setText(d.getEdition());
 		stockBox 		.setText(d.getTrueStock());
+		priceBox 		.setText(d.getPrice());
 		contentsBox 	.setText(d.getContents());
 		
 		availableBox.setSelected(d.isVisible());
@@ -164,6 +173,7 @@ public class AddDocForm extends JPanel implements Form {
 		versionBox 		.setText("");
 		editionBox 		.setText("");
 		stockBox 		.setText("");
+		priceBox 		.setText("");
 		contentsBox 	.setText("");
 	}
 }
