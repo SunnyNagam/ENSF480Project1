@@ -58,7 +58,7 @@ public class AddDocForm extends JPanel implements Form {
 		addInputBox(versionBox,		"Version");
 		addInputBox(editionBox,		"Edition");
 		addInputBox(stockBox,		"Stock  ");
-		addInputBox(priceBox,		"Stock  ");
+		addInputBox(priceBox,		"Price  ");
 		addInputBox(contentsBox,	"Content");
 		addInputBox(availableBox,	"Visible");
 
@@ -152,7 +152,7 @@ public class AddDocForm extends JPanel implements Form {
 		versionBox 		.setText(d.getVersion());
 		editionBox 		.setText(d.getEdition());
 		stockBox 		.setText(d.getTrueStock());
-		priceBox 		.setText(d.getPrice());
+		priceBox 		.setText(String.valueOf(d.getPrice()));
 		contentsBox 	.setText(d.getContents());
 		
 		availableBox.setSelected(d.isVisible());

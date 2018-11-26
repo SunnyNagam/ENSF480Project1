@@ -69,7 +69,7 @@ public class Document {
 	}
 	@Override
 	public String toString() {
-		String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s  %-4f",
+		String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4f",
 				getISBN(), getTitle(), getEdition(), getVersion(), getStock(), getAuthors(), getPrice());
 		return s;
 	}
@@ -153,8 +153,8 @@ public class Document {
 		Document titleDoc = new Document() {
 			@Override
 			public String toString() {	
-				String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s", 
-				"ISBN", "Title", "ed.", "ver", "cps.", "Authors");
+				String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4s", 
+				"ISBN", "Title", "ed.", "ver", "cps.", "Authors", "Price");
 				return s;
 			}
 		};

@@ -90,7 +90,7 @@ public class OrderForm extends JPanel implements Form {
 //		title = creditCardBox.getText();
 //		content = contentsBox.getText();
 //		
-		Document d = new Document(null, authors, null, null, version, edition, null);
+		Document d = new Document(null, authors, null, null, version, edition, null, 0);
 //		
 //		d.Available( availableBox.isSelected() );
 //		d.promotional = promoBox.isSelected();
