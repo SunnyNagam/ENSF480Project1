@@ -11,6 +11,8 @@ public class DataBaseManager {
 	DBManager DB;
 	User u;
 	Document d;
+	
+	//this is the transaction DB, for now
 	ArrayList<Payment> transactionRecord;
 	
 
@@ -43,5 +45,9 @@ public class DataBaseManager {
 	
 	public void addObject(String key, Object obj) {
 		DB.addObject(key, obj);
+	}
+	
+	public void addTransaction(Payment p) {
+		transactionRecord.add(p);
 	}
 }

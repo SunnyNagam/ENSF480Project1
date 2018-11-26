@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import database.PersonDBManager;
 import presentation.StorePage;
 import presentation.View;
+import presentation.forms.AddDocForm;
 import presentation.forms.Form;
 import presentation.forms.RegisterForm;
 import presentation.forms.SearchForm;
@@ -97,8 +98,23 @@ public class StoreHandler implements Handler {
 					((StorePage) gui).togglePromotions(controller.theDocuments.getPromotions());
 			}
 		});
+		form.placeOrderButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.loadForm("Order");
+				setupOrderFormButtons(form, controller);
+				//((AddDocForm)controller.mainView.formloader.getForm()).titleBox.setEditable(true);
+				
+			}
+		});
 	}
 	
+	protected void setupOrderFormButtons(SearchForm form, Controller controller2) {
+		// TODO buttons place order
+		//BUTTONNNNNSSS
+	}
+
 	public void setupRegisterFormButtons(Form theForm) {
 		RegisterForm form = (RegisterForm) theForm;
 		
