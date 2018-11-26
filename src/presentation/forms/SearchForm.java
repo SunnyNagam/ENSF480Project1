@@ -10,9 +10,10 @@ import java.awt.event.ActionListener;
 
 public class SearchForm extends JPanel implements Form  {
 
-	JPanel SearchForm;
+	JPanel SearchForm, resultSetPanel;
 	public JTextField searchField;
 	public JButton submitButton, backButton;
+	public JButton placeOrderButton;	//may be moved later- this is the button to display place-order form
 	public JList resultList;
 	public DefaultListModel listModel;
 	
@@ -27,18 +28,26 @@ public class SearchForm extends JPanel implements Form  {
 		searchField = new JTextField(15);
 		submitButton = new JButton("Submit");
 		backButton = new JButton("Cancel");
+		placeOrderButton = new JButton("Place Order");
 		
+		resultSetPanel = new JPanel();
 		listModel = new DefaultListModel();
 		resultList = new JList(listModel);
 		resultList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resultList.setSelectedIndex(0);
-		resultList.setVisibleRowCount(10);
+		resultList.setVisibleRowCount(5);
 		JScrollPane listScrollPane = new JScrollPane(resultList);
+		listScrollPane.setPreferredSize(new Dimension(350,300));
+		
 		SearchForm.add(searchField);
 		SearchForm.add(submitButton);
 		SearchForm.add(backButton);
-		SearchForm.add(listScrollPane);
 		add(SearchForm, BorderLayout.CENTER);
+
+		resultSetPanel.add(listScrollPane);
+		resultSetPanel.add(placeOrderButton);
+		add(resultSetPanel, BorderLayout.PAGE_END);
+
 		
 		//return this;
 		
