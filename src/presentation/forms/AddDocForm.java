@@ -78,7 +78,8 @@ public class AddDocForm extends JPanel implements Form {
 
 	@Override
 	public Object getData() {
-		Integer isbn, version, edition, stock, price;
+		Integer isbn, version, edition, stock;
+		double price;
 		//try-catches gaurd agaisnt yikes input, everything else should be checked by controller or DB
 		try {
 			isbn = Integer.valueOf(isbnBox.getText());
