@@ -22,4 +22,8 @@ public class Payment {
 		int len = creditCard.length();
 		return String.format("XXXX-XXXX-XXXX-%4s", creditCard.substring(len - 4, len));
 	}
+	
+	public void setUser(String usr) {
+		username = usr;
+	}
 }

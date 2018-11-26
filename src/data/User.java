@@ -21,6 +21,7 @@ public class User {
 	
 	private String fName;
 	private String lName;	
+	public String address, creditCard, cvv;
 	private String userName;
 	private String password;
 	private char userType;	//operator, manager, etc.

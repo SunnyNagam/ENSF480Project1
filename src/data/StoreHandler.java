@@ -12,6 +12,7 @@ import presentation.forms.AddDocForm;
 import presentation.forms.Form;
 import presentation.forms.RegisterForm;
 import presentation.forms.SearchForm;
+import presentation.forms.OrderForm;
 
 public class StoreHandler implements Handler {
 
@@ -104,8 +105,10 @@ public class StoreHandler implements Handler {
 			public void actionPerformed(ActionEvent e) {
 				controller.loadForm("Order");
 				setupOrderFormButtons(form, controller);
-				//((AddDocForm)controller.mainView.formloader.getForm()).titleBox.setEditable(true);
-				
+				controller.mainView.formloader.getForm().sendData(controller.getUser());
+				controller.mainView.formloader.getForm().sendData(form.resultList.getSelectedValue());
+				//((OrderForm) controller.mainView.formloader.getForm()).
+				//TODO idk
 			}
 		});
 	}

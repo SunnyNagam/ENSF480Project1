@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,12 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import data.Document;
+import data.Payment;
+import data.User;
 
 
 public class OrderForm extends JPanel implements Form {
 
 	JPanel addDocumentForm;
-	public JTextField addressBox, creditCardBox, secNumBox, quantityBox, docTitleBox;
+	public JTextField addressBox, creditCardBox, secNumBox, quantityBox, docTitleBox, priceBox;
 	
 	public JCheckBox giftBox; 
 	public JButton submitButton, backButton;
@@ -33,10 +36,12 @@ public class OrderForm extends JPanel implements Form {
 		
 		addDocumentForm = new JPanel();
 		addDocumentForm.setLayout( new BoxLayout(addDocumentForm,BoxLayout.Y_AXIS) );
-		addDocumentForm.add(new JLabel("Enter your infromation to register."));
+		addDocumentForm.add(new JLabel("Enter your infromation to buy this book."));
 
 		addressBox 		= new JTextField(15);
 		docTitleBox		= new JTextField(15);
+		docTitleBox.setEditable(false);
+		
 		creditCardBox 	= new JTextField(15);
 		secNumBox 		= new JTextField(15);
 		quantityBox 	= new JTextField(15);
@@ -47,11 +52,14 @@ public class OrderForm extends JPanel implements Form {
 		submitButton 	= new JButton("Purchase");
 		backButton 		= new JButton("Cancel");
 		
-		addInputBox(addressBox,		"ISBN   ");
-		addInputBox(creditCardBox,	"Title  ");
-		addInputBox(secNumBox,		"Authors");
-		addInputBox(quantityBox,	"Version");
-		addInputBox(giftBox,		"Visible");
+		addInputBox(addressBox,			 "Address  ");
+		addInputBox(creditCardBox, "Credit Card #  ");
+		addInputBox(secNumBox,		    	 "CVV  ");
+		
+		addDocumentForm.add(new JSeparator(SwingConstants.HORIZONTAL));
+		
+		addInputBox(quantityBox,		"Quantity  ");
+		addInputBox(giftBox,		   	   "Gift?  ");
 
 		addDocumentForm.add(new JSeparator(SwingConstants.HORIZONTAL));
 		
@@ -69,33 +77,23 @@ public class OrderForm extends JPanel implements Form {
 
 	@Override
 	public Object getData() {
-		Integer version, edition;
+		Double num, price;
 		//try-catches gaurd agaisnt yikes input, everything else should be checked by controller or DB
 		try {
-			version = Integer.valueOf(quantityBox.getText());
+			num = Double.valueOf(quantityBox.getText());
 		} catch (Exception e) {
-			version = null;
+			num = null;
 		}
 		try {
-			edition = Integer.valueOf(docTitleBox.getText());
+			price = Double.valueOf(priceBox.getText());
 		} catch (Exception e) {
-			edition = null;
+			price = null;
 		}
 		
-		ArrayList<String> authors = new ArrayList<String>
-			(Arrays.asList(secNumBox.getText().split(", ")));
+		Payment p = new Payment(creditCardBox.getText(), num*price, new Date(), null);
 		
-//		String title, content;
-//		
-//		title = creditCardBox.getText();
-//		content = contentsBox.getText();
-//		
-		Document d = new Document(null, authors, null, null, version, edition, null, 0);
-//		
-//		d.Available( availableBox.isSelected() );
-//		d.promotional = promoBox.isSelected();
-//		
-		return d;
+		return p;
+
 	}
 
 	@Override
@@ -109,28 +107,27 @@ public class OrderForm extends JPanel implements Form {
 		
 		temp.add(new JLabel(name));
 		temp.add(p);
-//		//janky add promo button
-//		if (name.equals("Visible")) {
-//			temp.add(new JLabel("Promotional"));
-//			temp.add(promoBox);
-//		}
-//		
+
 		addDocumentForm.add(temp);
 	}
 	@Override
 	public void sendData(Object obj) {
 		try {
-		Document d = (Document) obj;
-		addressBox 		.setText(d.getISBN());
-		creditCardBox 		.setText(d.getTitle());
-		secNumBox 		.setText(d.getAuthors());
-		quantityBox 		.setText(d.getVersion());
-		docTitleBox 		.setText(d.getEdition());
-		
+			Document d = (Document) obj;
+			quantityBox 	.setText("1");
+			docTitleBox 	.setText(d.getTitle());
 		} catch(Exception e) {
 			
 		}
-		//set text
+		try {
+			User usr = (User) obj;
+			addressBox 		.setText(usr.address);
+			creditCardBox 	.setText(usr.creditCard);
+			secNumBox 		.setText(usr.cvv);
+		} catch(Exception e) {
+			
+		}
+
 	}
 
 	public void clear() {
