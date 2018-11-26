@@ -2,6 +2,8 @@ package data;
 
 import java.util.HashMap;
 
+import database.PersonDBManager;
+
 public class User {
 //TODO move these to the constants interface
 	public static final char RegisteredBuyer = 'R';
@@ -33,7 +35,7 @@ public class User {
 		fName = first;
 		lName = last;
 		this.userName = userName;
-		this.password = password;
+		this.password = PersonDBManager.hashPass(password, userName);
 		this.userType = userType;
 		lastUpdated = System.nanoTime();
 		this.subscribed = (userType != UnregisteredBuyer);
