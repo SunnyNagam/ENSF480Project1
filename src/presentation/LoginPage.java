@@ -30,7 +30,7 @@ public class LoginPage extends JPanel implements View {
 		uNameLab = new JLabel("UserName:");
 		passLab = new JLabel("Password:");
 		introLab = new JLabel("Login to your publication system!!");
-		submitButton = new JButton("Submit");
+		submitButton = new JButton("Login");
 		guestButton = new JButton("Continue as Guest");
 
 		setLayout(new BorderLayout());

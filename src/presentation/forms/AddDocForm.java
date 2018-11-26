@@ -29,6 +29,7 @@ public class AddDocForm extends JPanel implements Form {
 	
 	@Override
 	public void loadForm() {
+		this.removeAll();
 	setLayout(new BorderLayout());
 		
 		addDocumentForm = new JPanel();
