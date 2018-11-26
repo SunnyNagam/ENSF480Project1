@@ -8,10 +8,10 @@ This boi is our project, many nice *features*, much cool __buttons__
 
 ## Requirements
 
-- [ ] RQ2: **Operators** should be able to 
+- [x] RQ2: **Operators** should be able to 
   - [x] add, 
-  - [ ] remove, or 
-  - [ ] update 
+  - [x] remove, or 
+  - [x] update 
   documents (book, journals, magazine, etc.)
 
 - [ ] RQ5: Ordinary-buyers should be able to 

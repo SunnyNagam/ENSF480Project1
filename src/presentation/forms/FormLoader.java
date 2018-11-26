@@ -27,8 +27,15 @@ public class FormLoader {
 	}
 	
 	public void setForm(String name) {
-		System.out.println("Switche to: "+name);
+		System.out.println("Switched to: "+name);
+		
 		theForm = formList.get(name);
+		
+		// more code from a desperate man
+		if (name.equals("AddDocForm")) {
+			formList.remove(name);
+			formList.put(name, new AddDocForm());
+		}
 	}
 	
 	public Form runForm() {

@@ -85,8 +85,8 @@ public class Controller extends Thread{
 			
 			break;
 		case Constants.deleteDoc:
-			//TODO
-			
+			Document d3 = (Document) newObj;
+			theDocuments.remove(d3);
 			break;
 		default:
 			System.out.println("Unrecognized command");

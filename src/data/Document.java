@@ -5,15 +5,24 @@ import java.util.Iterator;
 
 //a document can be a book, newspaper, journal, or any other type- it will just have null values
 public class Document {
-	private final Integer ISBN; //unique for each TYPE of book, not individual book
-	private final ArrayList<String> authors;	//the authors
+	private Integer ISBN; //unique for each TYPE of book, not individual book
+	private ArrayList<String> authors;	//the authors
 	private Integer stock;	//how much is available
 	private final String title;	//the document title
-	private final Integer version;	//for textbook
-	private final Integer edition;	//for newspaper
-	private final String contents;	//the stuff in the thing
+	private Integer version;	//for textbook
+	private Integer edition;	//for newspaper
+	private String contents;	//the stuff in the thing
 	private boolean available;
 	public boolean promotional;
+	private Document() {
+		this.ISBN = null;
+		this.authors = null;
+		this.title = null;
+		this.version = null;
+		this.edition = null;
+		this.contents = null;
+	}
+	
 	public Document(Integer num, ArrayList<String> authors, Integer stock, String title, Integer version, Integer edition, String contents) {
 		this.ISBN = num;
 		this.authors = authors;
@@ -35,10 +44,22 @@ public class Document {
 		this.contents = contents;
 		this.available = true;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void copy(Document other) {
+		this.ISBN 			= other.ISBN;
+		this.authors 		= (ArrayList<String>) other.authors.clone();
+		this.stock 			= other.stock;
+		this.version 		= other.version;
+		this.edition 		= other.edition;
+		this.contents 		= other.contents;
+		this.available 		= other.available;
+		this.promotional 	= other.promotional;
+	}
 	@Override
 	public String toString() {
-		String s = String.format("%s\t%s\t%s\t%s\t%s", 
-				getISBN(), getTitle(), getEdition(), getVersion(), getStock());
+		String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s", 
+				getISBN(), getTitle(), getEdition(), getVersion(), getStock(), getAuthors());
 		return s;
 	}
 	@Override
@@ -69,29 +90,29 @@ public class Document {
 		while (i.hasNext())
 			s += i.next() + (i.hasNext()? ", ": "");
 		
-		return s + "\t";
+		return s;
 	}
 	
 	/*
 	 * formats the stock t0 0-9 then 10+
 	 */
 	public final String getStock() {
-		return (stock < 10) ? String.format("%1d\t",stock) :  "10+\t";	// wow fancy 
+		return (stock < 10) ? String.format("%1d",stock) :  "10+";	// wow fancy 
 	}
 	public final String getTrueStock() {
 		return String.valueOf(stock);
 	}
 
 	public final String getTitle() {
-		return (title == null)? "null" : title + "\t";
+		return (title == null)? "N/A" : title ;
 	}
 
 	public final String getVersion() {
-		return (version==null)? "null" : String.valueOf(version) + "\t";
+		return (version==null)? "N/A" : String.valueOf(version);
 	}
 
 	public final String getEdition() {
-		return (edition==null)? "null" : String.valueOf(edition) + "\t";
+		return (edition==null)? "N/A" : String.valueOf(edition);
 	}
 
 	public final String getContents() {
@@ -115,5 +136,17 @@ public class Document {
 	public static Document example() {
 		return new Document(0,new ArrayList<String>(), 0,"",0,0,"");
 		
+	}
+	public static Document title() {
+		//Yeesh this is really extra
+		Document titleDoc = new Document() {
+			@Override
+			public String toString() {	
+				String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s", 
+				"ISBN", "Title", "ed.", "ver", "cps.", "Authors");
+				return s;
+			}
+		};
+		return titleDoc;
 	}
 }
