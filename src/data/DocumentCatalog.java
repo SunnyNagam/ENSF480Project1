@@ -42,4 +42,8 @@ public class DocumentCatalog {
 		//go through promos and make sure each one is supposed to be there
 		//TODO HEY THIS IS AN ACTUAL ONE -- PROMOS 
 	}
+
+	public void remove(Document d) {
+		documents.remove(d);
+	}
 }

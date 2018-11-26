@@ -60,7 +60,12 @@ public class OperatingHandler implements Handler{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("delete button pressed");
 				//get selected doc
+				Document d = gui.catalogueList.getSelectedValue();
+				System.out.println("Selected : " + d);
 				//update inv
+				controller.update(Constants.deleteDoc, d);
+				controller.switchTo("Management");
+				controller.mainView.currentView.updateData(controller.theDocuments.getCatalogue());
 			}
 		});
 	}
