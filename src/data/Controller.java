@@ -81,12 +81,17 @@ public class Controller extends Thread{
 		case Constants.updateDoc:
 			Document d2 = (Document) newObj;
 			theDocuments.update(d2);
+			System.out.println("yikes"+ theDocuments.getDocuments().get(0).getISBN());
+			
 			break;
 		case Constants.deleteDoc:
 			Document d3 = (Document) newObj;
 			theDocuments.remove(d3);
 			break;
+		default:
+			System.out.println("Unrecognized command");
 		}
+		
 		
 	}
 	

@@ -36,6 +36,7 @@ public class DocumentCatalog {
 		return temp;
 	}
 	public void update(Document d) {
+
 		documents.forEach(doc ->{
 			if (doc.getTitle().equals(d.getTitle())) doc.copy(d);
 		});
