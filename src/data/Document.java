@@ -83,15 +83,15 @@ public class Document {
 	}
 
 	public final String getTitle() {
-		return (title == null)? "\t" : title + "\t";
+		return (title == null)? "null" : title + "\t";
 	}
 
 	public final String getVersion() {
-		return (version==null)? "" : String.valueOf(version) + "\t";
+		return (version==null)? "null" : String.valueOf(version) + "\t";
 	}
 
 	public final String getEdition() {
-		return (edition==null)? "" : String.valueOf(edition) + "\t";
+		return (edition==null)? "null" : String.valueOf(edition) + "\t";
 	}
 
 	public final String getContents() {

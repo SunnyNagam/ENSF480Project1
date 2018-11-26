@@ -36,11 +36,21 @@ public class DocumentCatalog {
 		return temp;
 	}
 	public void update(Document d) {
-		documents.forEach(doc ->{
+//		documents.forEach(doc ->{
+//			if (doc.getTitle().equals(d.getTitle())) {
+//				doc = d;	//might need to clone here
+//			}
+//		});
+		System.out.println(d.toString());
+		for(Document doc : documents) {
+			System.out.println(d.getTitle()+"\n"+doc.getTitle()+"\n"+doc.getTitle().equals(d.getTitle()));
 			if (doc.getTitle().equals(d.getTitle())) {
 				doc = d;	//might need to clone here
+				System.out.println("why doesnt this work "+doc.getISBN());
+				//documents.remove(doc);		// rip
+				//documents.add(d);
 			}
-		});
+		}
 		//go through promos and make sure each one is supposed to be there
 		//TODO
 	}
