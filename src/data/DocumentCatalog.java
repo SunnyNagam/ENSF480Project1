@@ -49,8 +49,7 @@ public class DocumentCatalog {
 					removePromoDocument(d);
 			}
 		});
-		//go through promos and make sure each one is supposed to be there
-		//TODO HEY THIS IS AN ACTUAL ONE -- PROMOS 
+
 	}
 
 	private void removePromoDocument(Document d) {

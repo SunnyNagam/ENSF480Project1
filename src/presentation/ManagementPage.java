@@ -1,6 +1,7 @@
 package presentation;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +30,8 @@ public class ManagementPage extends JPanel implements View{
 	
 	public ManagementPage() {
 		// TODO Auto-generated constructor stub
-		JLabel test = new JLabel("This is the window\nfor viewing Documents,\nall of them");
+		JLabel test = new JLabel("This is the window for viewing Documents, all of them.");
+		test.setPreferredSize(new Dimension(500, 12));
 		setLayout(new BorderLayout());
 		
 		JPanel panel = new JPanel();
@@ -40,7 +42,7 @@ public class ManagementPage extends JPanel implements View{
 		
 		catalogueModel = new DefaultListModel<Document>();
 		catalogueList = new JList<Document> (catalogueModel);
-		catalogueList.setFont(new Font("menlo",Font.PLAIN,12));
+		catalogueList.setFont(new Font("courier",Font.PLAIN,12));
 			
 		Iterator<Document> entry = catalogue.iterator();
 		while( entry.hasNext() ) {
