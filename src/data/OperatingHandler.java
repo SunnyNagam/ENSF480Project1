@@ -33,6 +33,7 @@ public class OperatingHandler implements Handler{
 				System.out.println("Add button pressed");
 				controller.loadForm("AddDoc");
 				setupAddFormButtons(controller.mainView.formloader.getForm(), controller);
+				((AddDocForm)controller.mainView.formloader.getForm()).titleBox.setEditable(true);
 			}
 		});
 		
@@ -46,6 +47,7 @@ public class OperatingHandler implements Handler{
 				
 				controller.loadForm("AddDoc");
 				setupUpdateFormButtons(controller.mainView.formloader.getForm(), controller);
+				((AddDocForm)controller.mainView.formloader.getForm()).clear();
 				controller.mainView.formloader.getForm().sendData(d);
 				//so it can still be found by title
 				((AddDocForm)controller.mainView.formloader.getForm()).titleBox.setEditable(false);
@@ -72,6 +74,7 @@ public class OperatingHandler implements Handler{
 				System.out.println( (Document)theForm.getData()  + "   Added");
 				c.update(Constants.addDoc, theForm.getData());
 				c.switchTo("Management");
+				c.mainView.currentView.updateData(c.theDocuments.getCatalogue());
 			}
 		});
 		
@@ -79,6 +82,7 @@ public class OperatingHandler implements Handler{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				c.switchTo("Management");
+				c.mainView.currentView.updateData(c.theDocuments.getCatalogue());
 			}
 		});
 	}
@@ -91,6 +95,7 @@ public class OperatingHandler implements Handler{
 				System.out.println( (Document)theForm.getData() + "   Updated");
 				c.update(Constants.updateDoc, theForm.getData());
 				c.switchTo("Management");
+				c.mainView.currentView.updateData(c.theDocuments.getCatalogue());
 			}
 		});
 		
@@ -98,6 +103,7 @@ public class OperatingHandler implements Handler{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				c.switchTo("Management");
+				c.mainView.currentView.updateData(c.theDocuments.getCatalogue());
 			}
 		});
 	}

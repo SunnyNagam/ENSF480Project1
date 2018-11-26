@@ -78,6 +78,7 @@ public class ManagementPage extends JPanel implements View{
 		try {
 			catalogue = (ArrayList<Document>) arr.clone();
 			catalogueModel.clear();
+			catalogueModel.addElement(Document.title());
 			catalogue.forEach(entry -> {
 				//if ( entry.isVisible() )
 				catalogueModel.addElement(entry);

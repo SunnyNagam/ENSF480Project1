@@ -154,4 +154,15 @@ public class AddDocForm extends JPanel implements Form {
 		}
 		//set text
 	}
+
+	public void clear() {
+		//this is the code of a desperate man
+		isbnBox 		.setText("");
+		titleBox 		.setText("");
+		authorsBox 		.setText("");
+		versionBox 		.setText("");
+		editionBox 		.setText("");
+		stockBox 		.setText("");
+		contentsBox 	.setText("");
+	}
 }
