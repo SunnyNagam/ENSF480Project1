@@ -39,8 +39,7 @@ public class StorePage extends JPanel implements View{
 		setLayout(new BorderLayout());
 				
 		mainPanel = new JPanel();
-		mainPanel.add(new JLabel("StorePage Test"));
-		mainPanel.add(new JLabel("Stuff"));
+		mainPanel.add(new JLabel("Store"));
 				
 		add(mainPanel, BorderLayout.CENTER);
 		
