@@ -18,6 +18,7 @@ public class RegisterForm extends JPanel implements Form  {
 	
 	@Override
 	public void loadForm() {
+		this.removeAll();
 		setLayout(new BorderLayout());
 		
 		RegisterForm = new JPanel();
