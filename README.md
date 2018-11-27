@@ -20,9 +20,9 @@ This boi is our project, many nice *features*, much cool __buttons__
   - [ ] make payments.
   - [x] They should also be able to register as a registered-buyer, if they wish.
 
-- [ ] RQ6: Registered-Buyers should be able to 
+- [x] RQ6: Registered-Buyers should be able to 
   - [x] have access to the promotions list that regularly will be updated and 
-  - [ ] registered-buyers will be notified.
+  - [x] registered-buyers will be notified.
 
 - [x] RQ7: Registered-Buyers should be able to unsubscribe if they wish.
 

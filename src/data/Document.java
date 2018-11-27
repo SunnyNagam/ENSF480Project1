@@ -14,6 +14,7 @@ public class Document {
 	private String contents;	//the stuff in the thing
 	private boolean available;
 	public boolean promotional;
+	private double price;
 	private Document() {
 		this.ISBN = null;
 		this.authors = null;
@@ -23,7 +24,7 @@ public class Document {
 		this.contents = null;
 	}
 	
-	public Document(Integer num, ArrayList<String> authors, Integer stock, String title, Integer version, Integer edition, String contents) {
+	public Document(Integer num, ArrayList<String> authors, Integer stock, String title, Integer version, Integer edition, String contents, double p) {
 		this.ISBN = num;
 		this.authors = authors;
 		this.stock = stock;
@@ -32,8 +33,9 @@ public class Document {
 		this.edition = edition;
 		this.contents = contents;
 		this.available = true;
+		this.price = p;
 	}
-	public Document(Integer num, String authors, Integer stock, String title, Integer version, Integer edition, String contents) {
+	public Document(Integer num, String authors, Integer stock, String title, Integer version, Integer edition, String contents, double p) {
 		this.ISBN = num;
 		this.authors = new ArrayList<String>();
 		this.authors.add(authors);
@@ -43,8 +45,17 @@ public class Document {
 		this.edition = edition;
 		this.contents = contents;
 		this.available = true;
+		this.price = p;
 	}
 	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	@SuppressWarnings("unchecked")
 	public void copy(Document other) {
 		this.ISBN 			= other.ISBN;
@@ -58,8 +69,8 @@ public class Document {
 	}
 	@Override
 	public String toString() {
-		String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s", 
-				getISBN(), getTitle(), getEdition(), getVersion(), getStock(), getAuthors());
+		String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4f",
+				getISBN(), getTitle(), getEdition(), getVersion(), getStock(), getAuthors(), getPrice());
 		return s;
 	}
 	@Override
@@ -134,7 +145,7 @@ public class Document {
 //	Static
 //	__________________________
 	public static Document example() {
-		return new Document(0,new ArrayList<String>(), 0,"",0,0,"");
+		return new Document(0,new ArrayList<String>(), 0,"",0,0,"",0.0);
 		
 	}
 	public static Document title() {
@@ -142,8 +153,8 @@ public class Document {
 		Document titleDoc = new Document() {
 			@Override
 			public String toString() {	
-				String s = String.format("%-10s  %-20s  %-4s  %-4s  %-4s  %-20s", 
-				"ISBN", "Title", "ed.", "ver", "cps.", "Authors");
+				String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4s", 
+				"ISBN", "Title", "ed.", "ver", "cps.", "Authors", "Price");
 				return s;
 			}
 		};

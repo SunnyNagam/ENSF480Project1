@@ -98,6 +98,7 @@ public class OrderForm extends JPanel implements Form {
 		Payment p = new Payment(creditCardBox.getText(), num*price, new Date(), null);
 		
 		return p;
+
 	}
 
 	@Override

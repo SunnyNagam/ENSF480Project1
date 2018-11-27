@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import data.Controller;
@@ -26,7 +27,7 @@ public class LoginPage extends JPanel implements View {
 	public LoginPage(Controller main) {
 		// TODO Auto-generated constructor stub
 		userNameField = new JTextField(10);
-		passwordField = new JTextField(10);
+		passwordField = new JPasswordField(10);
 		uNameLab = new JLabel("UserName:");
 		passLab = new JLabel("Password:");
 		introLab = new JLabel("Login to your publication system!!");
