@@ -66,6 +66,11 @@ public class User {
 	public final char getType() {
 		return userType;
 	}
+	public String getCC() {
+		int len = creditCard.length();
+		if (len < 4) return "";
+		return String.format("XXXX-XXXX-XXXX-%4s", creditCard.substring(len - 4, len));
+	}
 	
 	public static final User guest() {
 		return new User ("", "", GuestUser, GuestPass, UnregisteredBuyer);

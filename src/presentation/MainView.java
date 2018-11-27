@@ -108,6 +108,13 @@ public class MainView extends JFrame{
 		formloader.setForm(page+"Form");		// this is still stratagy right
 		panel.removeAll();
 		panel.add((Component) formloader.runForm());
+		
+		try {
+			this.getRootPane().setDefaultButton(((SearchForm)formloader.runForm()).submitButton);
+		}catch(Exception e) {
+			//sorry
+		}
+		
 		//add(panel);
 		this.paintAll(this.getGraphics());
 	}

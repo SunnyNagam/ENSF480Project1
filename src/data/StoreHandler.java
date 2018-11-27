@@ -1,5 +1,6 @@
 package data;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +18,7 @@ import presentation.forms.OrderForm;
 public class StoreHandler implements Handler {
 
 	private Controller controller;
+	private Document currentOrder;
 	@Override
 	public void interact() {
 		// TODO Auto-generated method stub
@@ -107,7 +109,8 @@ public class StoreHandler implements Handler {
 				OrderForm order = (OrderForm) controller.mainView.formloader.getForm();
 				setupOrderFormButtons(order, gui);
 				order.sendData(controller.getUser());
-				order.sendData(form.resultList.getSelectedValue()); //returns a string
+				currentOrder = form.resultList.getSelectedValue();
+				order.sendData(currentOrder); //returns a string
 				//((OrderForm) controller.mainView.formloader.getForm()).
 				//TODO idk
 			}
@@ -120,9 +123,20 @@ public class StoreHandler implements Handler {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Pressed buy button");
-				//register((User)form.getData());
-				//TODO order
+				//System.out.println("Pressed buy button");
+				Object p =  form.getData();
+				((Payment) p).setUser(controller.getUser());
+				if (((Payment) p).getCreditCard().isEmpty() || form.secNumBox.getText().isEmpty()) {
+					JOptionPane.showMessageDialog((Component) gui, "Credit card fields cannot be empty", "Notice", JOptionPane.INFORMATION_MESSAGE);
+				} 
+				else if (controller.update(Constants.purchase, p)) {
+					JOptionPane.showMessageDialog((Component) gui, "Payment accepted and saved.", "Notice", JOptionPane.INFORMATION_MESSAGE);
+					controller.loadForm("Search");	//will call mainview to takeover
+					setupSearchFormButtons(gui, controller.mainView.formloader.getForm());
+				}
+				else {
+					JOptionPane.showMessageDialog((Component) gui, "Something went wrong, not enough items stock", "Notice", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		
@@ -130,7 +144,7 @@ public class StoreHandler implements Handler {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Pressed back button");
+				//System.out.println("Pressed back button");
 				controller.loadForm("Search");	//will call mainview to takeover
 				setupSearchFormButtons(gui, controller.mainView.formloader.getForm());
 			}

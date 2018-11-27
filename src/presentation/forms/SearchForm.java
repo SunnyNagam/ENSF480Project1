@@ -49,8 +49,6 @@ public class SearchForm extends JPanel implements Form  {
 		resultSetPanel.add(listScrollPane);
 		resultSetPanel.add(placeOrderButton);
 		add(resultSetPanel, BorderLayout.PAGE_END);
-
-		this.getRootPane().setDefaultButton(submitButton);
 		
 		//return this;
 		

@@ -18,6 +18,7 @@ public class DataBaseManager {
 
 	public DataBaseManager() {
 		DB = new PersonDBManager();	//set to person db manager by default
+		transactionRecord = new ArrayList<Payment>();
 	}
 	
 	public void setStrategy(DBManager db) {

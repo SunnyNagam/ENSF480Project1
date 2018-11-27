@@ -43,6 +43,9 @@ public class OrderForm extends JPanel implements Form {
 		docTitleBox		= new JTextField(15);
 		docTitleBox.setEditable(false);
 		
+		priceBox		= new JTextField(15);
+		priceBox.setEditable(false);
+		
 		creditCardBox 	= new JTextField(15);
 		secNumBox 		= new JTextField(15);
 		quantityBox 	= new JTextField(15);
@@ -53,7 +56,8 @@ public class OrderForm extends JPanel implements Form {
 		submitButton 	= new JButton("Purchase");
 		backButton 		= new JButton("Cancel");
 		
-		addInputBox(docTitleBox,		"Ordering  ");
+		addInputBox(docTitleBox,	 	"Ordering  ");
+		addInputBox(priceBox,			   "Price  ");
 		
 		addDocumentForm.add(new JSeparator(SwingConstants.HORIZONTAL));
 		
@@ -82,20 +86,21 @@ public class OrderForm extends JPanel implements Form {
 
 	@Override
 	public Object getData() {
-		Double num, price;
+		int num; 
+		Double price;
 		//try-catches gaurd agaisnt yikes input, everything else should be checked by controller or DB
 		try {
-			num = Double.valueOf(quantityBox.getText());
+			num = Integer.valueOf(quantityBox.getText());
 		} catch (Exception e) {
-			num = null;
+			num = 1;
 		}
 		try {
 			price = Double.valueOf(priceBox.getText());
 		} catch (Exception e) {
-			price = null;
+			price = 12.99;
 		}
 		
-		Payment p = new Payment(creditCardBox.getText(), num*price, new Date(), null);
+		Payment p = new Payment(creditCardBox.getText(), num*price, new Date(), null, docTitleBox.getText(), num);
 		
 		return p;
 
@@ -122,13 +127,14 @@ public class OrderForm extends JPanel implements Form {
 			Document d = (Document) obj;
 			quantityBox 	.setText("1");
 			docTitleBox 	.setText(d.getTitle());
+			priceBox		.setText( String.valueOf(d.getPrice()) );
 		} catch(Exception e) {
 			System.out.println("nice try.... in Doc section");
 		}
 		try {
 			User usr = (User) obj;
 			addressBox 		.setText(usr.address);
-			creditCardBox 	.setText(usr.creditCard);
+			creditCardBox 	.setText(usr.getCC());
 			secNumBox 		.setText(usr.cvv);
 		} catch(Exception e) {
 			System.out.println("nice try.... in User section");
