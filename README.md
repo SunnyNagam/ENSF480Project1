@@ -14,7 +14,7 @@ This boi is our project, many nice *features*, much cool __buttons__
   - [x] update 
   documents (book, journals, magazine, etc.)
 
-- [ ] RQ5: Ordinary-buyers should be able to 
+- [x] RQ5: Ordinary-buyers should be able to 
   - [x] search for a book, 
   - [x] place an order, and 
   - [x] make payments.
