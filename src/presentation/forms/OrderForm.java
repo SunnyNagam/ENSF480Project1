@@ -2,6 +2,7 @@ package presentation.forms;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -36,7 +37,7 @@ public class OrderForm extends JPanel implements Form {
 		
 		addDocumentForm = new JPanel();
 		addDocumentForm.setLayout( new BoxLayout(addDocumentForm,BoxLayout.Y_AXIS) );
-		addDocumentForm.add(new JLabel("Enter your infromation to buy this book."));
+		addDocumentForm.add(new JLabel("Enter your information to buy this book."));
 
 		addressBox 		= new JTextField(15);
 		docTitleBox		= new JTextField(15);
@@ -51,6 +52,10 @@ public class OrderForm extends JPanel implements Form {
 		
 		submitButton 	= new JButton("Purchase");
 		backButton 		= new JButton("Cancel");
+		
+		addInputBox(docTitleBox,		"Ordering  ");
+		
+		addDocumentForm.add(new JSeparator(SwingConstants.HORIZONTAL));
 		
 		addInputBox(addressBox,			 "Address  ");
 		addInputBox(creditCardBox, "Credit Card #  ");
@@ -103,8 +108,9 @@ public class OrderForm extends JPanel implements Form {
 	private void addInputBox(Component p, String name) {
 		JPanel temp = new JPanel();
 		temp.setLayout(new BoxLayout(temp,BoxLayout.X_AXIS));
-		
-		temp.add(new JLabel(name));
+		JLabel label = new JLabel(name);
+		label.setPreferredSize(new Dimension(100,12));
+		temp.add(label);
 		temp.add(p);
 
 		addDocumentForm.add(temp);
@@ -116,7 +122,7 @@ public class OrderForm extends JPanel implements Form {
 			quantityBox 	.setText("1");
 			docTitleBox 	.setText(d.getTitle());
 		} catch(Exception e) {
-			
+			System.out.println("nice try.... in Doc section");
 		}
 		try {
 			User usr = (User) obj;
@@ -124,7 +130,7 @@ public class OrderForm extends JPanel implements Form {
 			creditCardBox 	.setText(usr.creditCard);
 			secNumBox 		.setText(usr.cvv);
 		} catch(Exception e) {
-			
+			System.out.println("nice try.... in User section");
 		}
 
 	}

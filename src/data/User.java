@@ -39,6 +39,11 @@ public class User {
 		lastUpdated = System.nanoTime();
 		this.subscribed = (userType != UnregisteredBuyer);
 	}
+	public void addBillingInfo(String address, String creditCard, String cvv) {
+		this.address = address;
+		this.creditCard = creditCard;
+		this.cvv = cvv;	
+	}
 	public void toggleSubscription() {
 		this.subscribed = !this.subscribed;
 	}

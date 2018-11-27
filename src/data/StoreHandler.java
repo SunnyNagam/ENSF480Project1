@@ -104,18 +104,37 @@ public class StoreHandler implements Handler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.loadForm("Order");
-				setupOrderFormButtons(form, controller);
-				controller.mainView.formloader.getForm().sendData(controller.getUser());
-				controller.mainView.formloader.getForm().sendData(form.resultList.getSelectedValue());
+				OrderForm order = (OrderForm) controller.mainView.formloader.getForm();
+				setupOrderFormButtons(order, gui);
+				order.sendData(controller.getUser());
+				order.sendData(form.resultList.getSelectedValue()); //returns a string
 				//((OrderForm) controller.mainView.formloader.getForm()).
 				//TODO idk
 			}
 		});
 	}
 	
-	protected void setupOrderFormButtons(SearchForm form, Controller controller2) {
+	protected void setupOrderFormButtons(OrderForm form, View gui) {
 		// TODO buttons place order
-		//BUTTONNNNNSSS
+		form.submitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Pressed buy button");
+				//register((User)form.getData());
+				//TODO order
+			}
+		});
+		
+		form.backButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Pressed back button");
+				controller.loadForm("Search");	//will call mainview to takeover
+				setupSearchFormButtons(gui, controller.mainView.formloader.getForm());
+			}
+		});
 	}
 
 	public void setupRegisterFormButtons(Form theForm) {
@@ -178,8 +197,8 @@ public class StoreHandler implements Handler {
 					controller.theDocuments.getDocuments().get(i).getAuthors().contains((String) getFormData()) )
 			{
 				System.out.println("Success");
-				controller.mainView.formloader.displayResults(controller.theDocuments.getDocuments().get(i).toString());
-				break;
+				controller.mainView.formloader.displayResults(controller.theDocuments.getDocuments().get(i));
+				//break;
 			}
 		}
 		
