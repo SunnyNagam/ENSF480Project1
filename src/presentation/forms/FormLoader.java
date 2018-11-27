@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
+import data.Document;
+
 public class FormLoader {
 	HashMap<String, Form> formList;
 	Form theForm;
@@ -15,7 +17,7 @@ public class FormLoader {
 		formList.put("SearchForm", new SearchForm());
 		formList.put("RegisterForm", new RegisterForm());
 		formList.put("AddDocForm", new AddDocForm());
-		formList.put("Order", new OrderForm());
+		formList.put("OrderForm", new OrderForm());
 	}
 	
 	public void setForm(Form newForm) {
@@ -55,7 +57,11 @@ public class FormLoader {
 		return theForm;
 	}
 	
-	public void displayResults(String val) {
-		theForm.displayResults(val);
+	public void displayResults(Document val) {
+		try {
+			((SearchForm) theForm).displayResults(val);
+		} catch(Exception e) {
+			theForm.displayResults(val.toString());
+		}
 	}
 }

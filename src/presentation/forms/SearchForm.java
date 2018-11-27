@@ -5,6 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import data.Document;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,8 +16,8 @@ public class SearchForm extends JPanel implements Form  {
 	public JTextField searchField;
 	public JButton submitButton, backButton;
 	public JButton placeOrderButton;	//may be moved later- this is the button to display place-order form
-	public JList resultList;
-	public DefaultListModel listModel;
+	public JList<Document> resultList;
+	public DefaultListModel<Document> listModel;
 	
 	@Override
 	public void loadForm() {
@@ -31,8 +33,8 @@ public class SearchForm extends JPanel implements Form  {
 		placeOrderButton = new JButton("Place Order");
 		
 		resultSetPanel = new JPanel();
-		listModel = new DefaultListModel();
-		resultList = new JList(listModel);
+		listModel = new DefaultListModel<Document>();
+		resultList = new JList<Document>(listModel);
 		resultList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resultList.setSelectedIndex(0);
 		resultList.setVisibleRowCount(5);
@@ -47,7 +49,6 @@ public class SearchForm extends JPanel implements Form  {
 		resultSetPanel.add(listScrollPane);
 		resultSetPanel.add(placeOrderButton);
 		add(resultSetPanel, BorderLayout.PAGE_END);
-
 		
 		//return this;
 		
@@ -63,7 +64,7 @@ public class SearchForm extends JPanel implements Form  {
 				
 	}
 
-	public void displayResults(String book) {
+	public void displayResults(Document book) {
 		if (book == null)
 		{
 			listModel.clear();
@@ -75,6 +76,12 @@ public class SearchForm extends JPanel implements Form  {
 	}
 	@Override
 	public void sendData(Object obj) {
+		
+	}
+
+	@Override
+	public void displayResults(String something) {
+		// TODO Auto-generated method stub
 		
 	}
 }

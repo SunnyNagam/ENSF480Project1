@@ -24,7 +24,11 @@ public class PersonDBManager implements DBManager {
 		personDataBase.put("a", new User("Satwick", "Nagam", "a", "a", User.Operator));	//Sunny is an operator and his aunty smells of elderberries
 		personDataBase.put("SunJeep", new User("Satwick", "Nagam", "SunJeep", "yikes", User.Operator));	//Sunny is an operator and his aunty smells of elderberries
 		personDataBase.put("LouJeep", new User("Louis", "Johnson", "LouJeep", "yeet", User.Operator));	//Louis is an operator and a richard cranium
-		personDataBase.put("Kanye", new User("Keenan", "Gaudio", "Kanye", "West", User.RegisteredBuyer));	//Keenan is a registered buyer and lame
+		personDataBase.put("b", new User("Raymond", "Jones", "b", "b", User.RegisteredBuyer)); //reg. user with no billing info
+		User k = new User("Keenan", "Gaudio", "Kanye", "West", User.RegisteredBuyer);
+		k.addBillingInfo("HomeTown, CA", "123456789123", "127");
+		personDataBase.put(k.getUserName(),k);	//Keenan is a registered buyer and lame
+
 	}
 	
 	@Override

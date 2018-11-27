@@ -69,7 +69,7 @@ public class Document {
 	}
 	@Override
 	public String toString() {
-		String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4f",
+		String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-35s  %-4.2f",
 				getISBN(), getTitle(), getEdition(), getVersion(), getStock(), getAuthors(), getPrice());
 		return s;
 	}
@@ -137,8 +137,11 @@ public class Document {
 		this.available = a; 
 	}
 	
-	public void decrementStock(int _numSold) {
+	public boolean decrementStock(int _numSold) {
+		if (_numSold > stock) return false;
 		stock -= _numSold;
+		
+		return true;
 	}
 //	__________________________
 		
@@ -153,7 +156,7 @@ public class Document {
 		Document titleDoc = new Document() {
 			@Override
 			public String toString() {	
-				String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-20s  %-4s", 
+				String s = String.format("%-10s  %-30s  %-4s  %-4s  %-4s  %-35s  %-7s", 
 				"ISBN", "Title", "ed.", "ver", "cps.", "Authors", "Price");
 				return s;
 			}

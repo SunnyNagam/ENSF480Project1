@@ -6,6 +6,7 @@ public interface Constants {
 	public final int add			= 0x1;	// sequential 
 	public final int delete			= 0x2;	//
 	public final int update			= 0x3;	//
+	public final int purchase		= 0x4;
 	
 	public final int numActions		= 0x5;	//make bigger than last action
 

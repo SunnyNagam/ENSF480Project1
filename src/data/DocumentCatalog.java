@@ -61,4 +61,13 @@ public class DocumentCatalog {
 	public void remove(Document d) {
 		documents.remove(d);
 	}
+	//returns true if success
+	public boolean purchase(String docTitle, int num) {
+		for (Document doc : documents) {
+			if (doc.getTitle().equals(docTitle)){
+				if (!doc.decrementStock(num) ) return false;
+			}
+		}
+		return true;
+	}
 }

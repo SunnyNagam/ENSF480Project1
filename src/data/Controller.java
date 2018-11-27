@@ -76,7 +76,8 @@ public class Controller extends Thread{
 		else
 			return false;*/
 	}
-	public void update (int cmd, Object newObj) {
+	//returns true if success
+	public boolean update (int cmd, Object newObj) {
 		switch (cmd) {
 		case Constants.addDoc:
 			Document d = (Document) newObj;
@@ -95,10 +96,16 @@ public class Controller extends Thread{
 			Document d3 = (Document) newObj;
 			theDocuments.remove(d3);
 			break;
+		case Constants.purchase:
+			Payment p = (Payment) newObj;
+			dataManager.addTransaction(p);
+			if (!theDocuments.purchase(p.docTitle, p.amountSold)) return false;
+			System.out.println("Great success.");
+			break;
 		default:
 			System.out.println("Unrecognized command");
 		}
-		
+		return true;
 		
 	}
 	

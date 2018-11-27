@@ -41,6 +41,11 @@ public class User {
 		lastUpdated = System.nanoTime();
 		this.subscribed = (userType != UnregisteredBuyer);
 	}
+	public void addBillingInfo(String address, String creditCard, String cvv) {
+		this.address = address;
+		this.creditCard = creditCard;
+		this.cvv = cvv;	
+	}
 	public void toggleSubscription() {
 		this.subscribed = !this.subscribed;
 	}
@@ -60,6 +65,11 @@ public class User {
 	
 	public final char getType() {
 		return userType;
+	}
+	public String getCC() {
+		int len = creditCard.length();
+		if (len < 4) return "";
+		return String.format("XXXX-XXXX-XXXX-%4s", creditCard.substring(len - 4, len));
 	}
 	
 	public static final User guest() {
